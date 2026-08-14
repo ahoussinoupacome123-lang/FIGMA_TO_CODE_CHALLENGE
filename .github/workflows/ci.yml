@@ -23,6 +23,13 @@ jobs:
         run: npm run build
       - name: Run tests
         run: npm run test:ci
+      - name: Start Next server for Lighthouse
+        if: github.event_name == 'push'
+        run: |
+          # start the server in background for LHCI to hit
+          npm run start &
+          # wait for it to be reachable
+          n=0; until curl -sSf http://localhost:3000 >/dev/null || [ $n -ge 30 ]; do n=$((n+1)); sleep 1; done
       - name: Lighthouse CI (optional)
         if: github.event_name == 'push'
         uses: treosh/lighthouse-ci-action@v8
