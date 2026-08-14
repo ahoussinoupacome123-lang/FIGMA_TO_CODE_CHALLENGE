@@ -18,13 +18,13 @@ export default function Home() {
       <main className='flex-1'>
         <Hero />
         <HorizontalSlider>
-          <WhyDonate />
-          <WhoCanDonate />
-          <EligibilityTest />
-          <DonationProcess />
-          <PreparationGuide />
-          <BloodReserves />
-          <FAQ />
+          <div data-title="Pourquoi donner"><WhyDonate /></div>
+          <div data-title="Qui peut donner"><WhoCanDonate /></div>
+          <div data-title="Test d'éligibilité"><EligibilityTest /></div>
+          <div data-title="Processus de don"><DonationProcess /></div>
+          <div data-title="Préparation"><PreparationGuide /></div>
+          <div data-title="Réserves de sang"><BloodReserves /></div>
+          <div data-title="FAQ"><FAQ /></div>
         </HorizontalSlider>
         <CenterDirectory />
       </main>

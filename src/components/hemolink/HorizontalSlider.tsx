@@ -8,6 +8,8 @@ export default function HorizontalSlider({ children }: { children: ReactNode }) 
   const [active, setActive] = useState(0);
 
   const slides = Children.toArray(children);
+  // Titles extracted from wrapper `data-title` attribute when present
+  const metas = slides.map((s) => (s as any)?.props?.['data-title'] || 'Info');
 
   useEffect(() => {
     const el = containerRef.current;
@@ -53,6 +55,20 @@ export default function HorizontalSlider({ children }: { children: ReactNode }) 
 
   return (
     <div className="relative py-6">
+      {/* Mobile: accordion grouped list */}
+      <div className="sm:hidden px-4">
+        {slides.map((s, i) => (
+          <details key={i} className="mb-3 bg-white rounded-xl border border-stone-200 overflow-hidden" aria-expanded={active === i}>
+            <summary className="flex items-center justify-between px-4 py-3 cursor-pointer list-none text-sm font-medium">
+              <span>{metas[i]}</span>
+              <span className="text-stone-400">{active === i ? '−' : '+'}</span>
+            </summary>
+            <div className="px-4 pb-4 pt-2">
+              {s}
+            </div>
+          </details>
+        ))}
+      </div>
       <div className="relative">
         <div
           ref={containerRef}
