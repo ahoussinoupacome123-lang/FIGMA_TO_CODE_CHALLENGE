@@ -9,6 +9,7 @@ import CenterDirectory from '@/components/hemolink/CenterDirectory';
 import BloodReserves from '@/components/hemolink/BloodReserves';
 import FAQ from '@/components/hemolink/FAQ';
 import Footer from '@/components/hemolink/Footer';
+import HorizontalSlider from '@/components/hemolink/HorizontalSlider';
 
 export default function Home() {
   return (
@@ -16,14 +17,16 @@ export default function Home() {
       <Navigation />
       <main className='flex-1'>
         <Hero />
-        <WhyDonate />
-        <WhoCanDonate />
-        <EligibilityTest />
-        <DonationProcess />
-        <PreparationGuide />
+        <HorizontalSlider>
+          <WhyDonate />
+          <WhoCanDonate />
+          <EligibilityTest />
+          <DonationProcess />
+          <PreparationGuide />
+          <BloodReserves />
+          <FAQ />
+        </HorizontalSlider>
         <CenterDirectory />
-        <BloodReserves />
-        <FAQ />
       </main>
       <Footer />
     </div>
