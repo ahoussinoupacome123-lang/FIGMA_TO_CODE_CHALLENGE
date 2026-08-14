@@ -56,6 +56,9 @@
   --radius: 0.75rem;
   --background: #FFFBF5;
   --foreground: #1C1917;
+  /* Local / system font fallbacks to avoid remote font fetching during CI */
+  --font-geist-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
   --card: #FFFFFF;
   --card-foreground: #1C1917;
   --popover: #FFFFFF;
@@ -231,6 +234,27 @@
 /* Leaflet map overrides */
 .leaflet-container {
   font-family: inherit;
+}
+
+/* Local font faces (place font files under /public/fonts). Using variable `--font-geist-sans` and `--font-geist-mono` */
+@font-face {
+  font-family: 'InterVarLocal';
+  src: url('/fonts/Inter-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'InterLocal';
+  src: url('/fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-geist-sans: 'InterVarLocal', 'InterLocal', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans';
+  --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
 }
 .closed-marker {
   opacity: 0.5;

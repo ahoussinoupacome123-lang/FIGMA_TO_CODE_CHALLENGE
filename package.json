@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "vitest",
+    "test:ci": "vitest --run"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -29,6 +31,8 @@
     "eslint-config-next": "^16.1.1",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.5",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^1.4.5",
+    "@types/jest": "^29.5.5"
   }
 }
