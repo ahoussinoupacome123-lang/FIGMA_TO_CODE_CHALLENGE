@@ -9,7 +9,17 @@ import CenterDirectory from '@/components/hemolink/CenterDirectory';
 import BloodReserves from '@/components/hemolink/BloodReserves';
 import FAQ from '@/components/hemolink/FAQ';
 import Footer from '@/components/hemolink/Footer';
-import HorizontalSlider from '@/components/hemolink/HorizontalSlider';
+import SectionTabs from '@/components/hemolink/SectionTabs';
+
+const tabs = [
+  { id: 'pourquoi', label: 'Pourquoi ?' },
+  { id: 'eligibilite', label: 'Qui peut donner ?' },
+  { id: 'test', label: "Test d'éligibilité" },
+  { id: 'deroulement', label: 'Processus' },
+  { id: 'preparation', label: 'Préparation' },
+  { id: 'reserves', label: 'Réserves' },
+  { id: 'faq', label: 'FAQ' },
+];
 
 export default function Home() {
   return (
@@ -17,15 +27,15 @@ export default function Home() {
       <Navigation />
       <main className='flex-1'>
         <Hero />
-        <HorizontalSlider>
-          <div data-title="Pourquoi donner"><WhyDonate /></div>
-          <div data-title="Qui peut donner"><WhoCanDonate /></div>
-          <div data-title="Test d'éligibilité"><EligibilityTest /></div>
-          <div data-title="Processus de don"><DonationProcess /></div>
-          <div data-title="Préparation"><PreparationGuide /></div>
-          <div data-title="Réserves de sang"><BloodReserves /></div>
-          <div data-title="FAQ"><FAQ /></div>
-        </HorizontalSlider>
+        <SectionTabs tabs={tabs}>
+          <WhyDonate />
+          <WhoCanDonate />
+          <EligibilityTest />
+          <DonationProcess />
+          <PreparationGuide />
+          <BloodReserves />
+          <FAQ />
+        </SectionTabs>
         <CenterDirectory />
       </main>
       <Footer />

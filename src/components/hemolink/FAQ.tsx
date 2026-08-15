@@ -17,7 +17,7 @@ export default function FAQ() {
       : faqItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section id='faq' className='py-20 sm:py-28 gradient-crimson-soft'>
+    <section className='py-20 sm:py-28 gradient-crimson-soft'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div ref={ref} className='text-center max-w-2xl mx-auto mb-12'>
           <motion.span

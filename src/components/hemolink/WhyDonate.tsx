@@ -59,7 +59,7 @@ export default function WhyDonate() {
   const inView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
-    <section id="pourquoi" className="py-20 sm:py-28 bg-cream">
+    <section className="py-20 sm:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div ref={sectionRef} className="text-center max-w-2xl mx-auto mb-16">

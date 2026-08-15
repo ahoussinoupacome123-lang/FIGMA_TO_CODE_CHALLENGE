@@ -45,7 +45,7 @@ export default function WhoCanDonate() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="eligibilite" className="py-20 sm:py-28 bg-white">
+    <section className="py-20 sm:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center max-w-2xl mx-auto mb-16">
           <motion.span

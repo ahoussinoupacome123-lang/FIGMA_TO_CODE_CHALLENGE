@@ -156,37 +156,6 @@ Aucune variable d'environnement requise.
 
 ---
 
-## Live demo
-
-Le site est déployé sur Vercel : https://figma-to-code-challenge-web.vercel.app
-
-## Optional / Extras included
-
-- Vendored fonts (no network fetch at build time)
-- Playwright smoke tests (CI-friendly)
-- Unit tests with Vitest for core logic (`src/lib/eligibility.ts`)
-
-## Submission — Remaining items
-
-Pour la soumission finale, il reste les éléments suivants :
-
-- Ajouter un court GIF/vidéo de démonstration et lier la démo dans ce `README`
-
-### Demo GIF / Video (placeholder)
-
-![Demo placeholder](public/demo.svg)
-
-Remplacez `public/demo.svg` par votre enregistrement GIF (`public/demo.gif`) ou vidéo (`public/demo.mp4`). Idéalement : 5–12 secondes montrant le flux principal (test d'éligibilité → recherche centre → carte). Committez le média sous `public/` et le README l'affichera automatiquement.
-
-Alternatively, you can generate a placeholder MP4 locally with `ffmpeg` using the included helper script:
-
-```bash
-./scripts/generate-demo.sh
-```
-
-The script requires `ffmpeg` to be installed (e.g. `sudo apt install ffmpeg`). It will produce `public/demo.mp4`.
-
-
 ## Licence
 
 Projet éducatif — Figma to Code Challenge Édition 4.
