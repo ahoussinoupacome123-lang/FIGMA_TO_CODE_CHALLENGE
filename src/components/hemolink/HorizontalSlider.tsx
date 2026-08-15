@@ -109,7 +109,6 @@ export default function HorizontalSlider({ children }: { children: ReactNode }) 
           <details
             key={i}
             className="mb-3 bg-white rounded-xl border border-stone-200 overflow-hidden"
-            aria-expanded={active === i}
             onToggle={(e) => {
               const el = e.target as HTMLDetailsElement;
               if (el.open) {
@@ -118,8 +117,12 @@ export default function HorizontalSlider({ children }: { children: ReactNode }) 
                 if (!parent) return;
                 const others = Array.from(parent.querySelectorAll('details')) as HTMLDetailsElement[];
                 others.forEach((d) => { if (d !== el) d.open = false; });
-                // scroll the matching slide into view when opening
+                // update active index and scroll the matching slide into view when opening
+                setActive(i);
                 setTimeout(() => scrollTo(i), 120);
+              } else {
+                // if closed, clear active if it was the same
+                if (active === i) setActive(0);
               }
             }}
           >
