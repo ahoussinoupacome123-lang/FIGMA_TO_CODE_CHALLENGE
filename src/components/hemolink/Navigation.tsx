@@ -46,6 +46,35 @@ export default function Navigation() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  // Intercept hash link clicks and handle sections inside the horizontal slider
+  useEffect(() => {
+    const handler = (ev: MouseEvent) => {
+      const target = (ev.target as HTMLElement)?.closest?.('a') as HTMLAnchorElement | null;
+      if (!target) return;
+      const href = target.getAttribute('href') || '';
+      if (!href.startsWith('#')) return;
+      const id = href.slice(1);
+      const section = document.getElementById(id);
+      if (!section) return;
+
+      const slider = document.querySelector('[role="list"][aria-label="Sections glissantes"]') as HTMLElement | null;
+      if (slider && slider.contains(section)) {
+        ev.preventDefault();
+        const kids = Array.from(slider.children) as HTMLElement[];
+        let idx = kids.findIndex((k) => k.contains(section));
+        if (idx === -1) idx = 0;
+        slider.scrollTo({ left: kids[idx].offsetLeft, behavior: 'smooth' });
+        // On mobile, open the corresponding <details>
+        const details = Array.from(slider.querySelectorAll('details')) as HTMLDetailsElement[];
+        if (details.length) {
+          details.forEach((d, i) => { d.open = i === idx; });
+        }
+      }
+    };
+    document.addEventListener('click', handler);
+    return () => document.removeEventListener('click', handler);
+  }, []);
+
   return (
     <>
       <header
