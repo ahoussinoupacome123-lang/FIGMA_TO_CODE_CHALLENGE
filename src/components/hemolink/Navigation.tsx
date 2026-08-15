@@ -71,11 +71,14 @@ export default function Navigation() {
           details.forEach((d, i) => { d.open = i === idx; });
         }
 
-        // Ensure the target section receives focus and is visible vertically
+        // Ensure the target section receives focus and is visible vertically with a sliding effect
         setTimeout(() => {
           try {
+            const headerH = document.querySelector('header')?.clientHeight || 80;
+            const rect = section.getBoundingClientRect();
+            const targetY = window.scrollY + rect.top - Math.min(headerH + 24, Math.round(window.innerHeight * 0.15));
             section.setAttribute('tabindex', '-1');
-            section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
             (section as HTMLElement).focus();
           } catch (e) {
             // ignore
@@ -85,8 +88,11 @@ export default function Navigation() {
         // Not inside slider: let normal anchor work but ensure smooth scroll + focus
         setTimeout(() => {
           try {
+            const headerH = document.querySelector('header')?.clientHeight || 80;
+            const rect = section.getBoundingClientRect();
+            const targetY = window.scrollY + rect.top - Math.min(headerH + 24, Math.round(window.innerHeight * 0.12));
             section.setAttribute('tabindex', '-1');
-            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.scrollTo({ top: targetY, behavior: 'smooth' });
             (section as HTMLElement).focus();
           } catch (e) {
             // ignore
