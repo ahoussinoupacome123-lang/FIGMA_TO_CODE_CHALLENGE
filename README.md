@@ -156,6 +156,25 @@ Aucune variable d'environnement requise.
 
 ---
 
+## Live demo
+
+Le site est déployé sur Vercel : https://figma-to-code-challenge-web.vercel.app
+
+## Optional / Extras included
+
+- Vendored fonts (no network fetch at build time)
+- Playwright smoke tests (CI-friendly)
+- Unit tests with Vitest for core logic (`src/lib/eligibility.ts`)
+
+## Submission — Remaining items
+
+Pour la soumission finale, il reste les éléments suivants :
+
+- Intégrer Lighthouse CI (ou fournir les rapports Lighthouse) — non implémenté
+- Finaliser les contrôles d'accessibilité automatisés (axe) — choix entre Vitest+axe ou Playwright a11y
+- Ajouter un court GIF/vidéo de démonstration et lier la démo dans ce `README`
+
+
 ## Licence
 
 Projet éducatif — Figma to Code Challenge Édition 4.
