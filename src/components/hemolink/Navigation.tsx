@@ -48,31 +48,23 @@ export default function Navigation() {
 
   // Intercept hash link clicks and handle sections inside the horizontal slider
   useEffect(() => {
-    const handler = (ev: MouseEvent) => {
-      const target = (ev.target as HTMLElement)?.closest?.('a') as HTMLAnchorElement | null;
-      if (!target) return;
-      const href = target.getAttribute('href') || '';
-      if (!href.startsWith('#')) return;
-      const id = href.slice(1);
-      const section = document.getElementById(id);
+    const handleHashNavigation = (id: string | null) => {
+      if (!id) return;
+      const clean = id.startsWith('#') ? id.slice(1) : id;
+      const section = document.getElementById(clean);
       if (!section) return;
 
       const slider = document.querySelector('[role="list"][aria-label="Sections glissantes"]') as HTMLElement | null;
       if (slider && slider.contains(section)) {
-        ev.preventDefault();
         const kids = Array.from(slider.children) as HTMLElement[];
         let idx = kids.findIndex((k) => k.contains(section));
         if (idx === -1) idx = 0;
         const targetLeft = kids[idx].offsetLeft;
-        // Scroll horizontally to the slide
         slider.scrollTo({ left: targetLeft, behavior: 'smooth' });
-        // On mobile, open the corresponding <details>
         const details = Array.from(slider.querySelectorAll('details')) as HTMLDetailsElement[];
-        if (details.length) {
-          details.forEach((d, i) => { d.open = i === idx; });
-        }
+        if (details.length) details.forEach((d, i) => { d.open = i === idx; });
 
-        // Wait until horizontal scroll is near targetLeft, then perform vertical slide
+        // Wait for horizontal scroll to reach target then vertical slide
         const start = performance.now();
         const tick = () => {
           const now = performance.now();
@@ -95,7 +87,7 @@ export default function Navigation() {
         };
         requestAnimationFrame(tick);
       } else {
-        // Not inside slider: let normal anchor work but ensure smooth scroll + focus
+        // Regular section outside slider — vertical slide
         setTimeout(() => {
           try {
             const headerH = document.querySelector('header')?.clientHeight || 80;
@@ -110,8 +102,35 @@ export default function Navigation() {
         }, 50);
       }
     };
-    document.addEventListener('click', handler);
-    return () => document.removeEventListener('click', handler);
+
+    const clickHandler = (ev: MouseEvent) => {
+      const anchor = (ev.target as HTMLElement)?.closest?.('a') as HTMLAnchorElement | null;
+      if (!anchor) return;
+      const href = anchor.getAttribute('href') || '';
+      // handle both '#id' and full-url with hash
+      const hashIndex = href.indexOf('#');
+      if (hashIndex === -1) return;
+      const fragment = href.slice(hashIndex + 1);
+      if (!fragment) return;
+      ev.preventDefault();
+      handleHashNavigation(fragment);
+      // update the URL hash without default jump
+      if (window.history && window.location.hash !== `#${fragment}`) {
+        window.history.pushState(null, '', `#${fragment}`);
+      }
+    };
+
+    const onHashChange = () => handleHashNavigation(window.location.hash);
+
+    document.addEventListener('click', clickHandler);
+    window.addEventListener('hashchange', onHashChange);
+    // handle initial load with hash
+    if (window.location.hash) handleHashNavigation(window.location.hash);
+
+    return () => {
+      document.removeEventListener('click', clickHandler);
+      window.removeEventListener('hashchange', onHashChange);
+    };
   }, []);
 
   return (
