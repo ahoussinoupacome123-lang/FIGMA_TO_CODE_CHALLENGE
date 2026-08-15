@@ -170,9 +170,13 @@ Le site est déployé sur Vercel : https://figma-to-code-challenge-web.vercel.ap
 
 Pour la soumission finale, il reste les éléments suivants :
 
-- Intégrer Lighthouse CI (ou fournir les rapports Lighthouse) — non implémenté
-- Finaliser les contrôles d'accessibilité automatisés (axe) — choix entre Vitest+axe ou Playwright a11y
 - Ajouter un court GIF/vidéo de démonstration et lier la démo dans ce `README`
+
+### Demo GIF / Video (placeholder)
+
+![Demo placeholder](public/demo.svg)
+
+Remplacez `public/demo.svg` par votre enregistrement GIF (`public/demo.gif`) ou vidéo (`public/demo.mp4`). Idéalement : 5–12 secondes montrant le flux principal (test d'éligibilité → recherche centre → carte). Committez le média sous `public/` et le README l'affichera automatiquement.
 
 
 ## Licence
