@@ -178,6 +178,14 @@ Pour la soumission finale, il reste les éléments suivants :
 
 Remplacez `public/demo.svg` par votre enregistrement GIF (`public/demo.gif`) ou vidéo (`public/demo.mp4`). Idéalement : 5–12 secondes montrant le flux principal (test d'éligibilité → recherche centre → carte). Committez le média sous `public/` et le README l'affichera automatiquement.
 
+Alternatively, you can generate a placeholder MP4 locally with `ffmpeg` using the included helper script:
+
+```bash
+./scripts/generate-demo.sh
+```
+
+The script requires `ffmpeg` to be installed (e.g. `sudo apt install ffmpeg`). It will produce `public/demo.mp4`.
+
 
 ## Licence
 
