@@ -227,7 +227,7 @@ export default function EligibilityTest() {
             {/* Last donation */}
             <div className="mb-8">
               <label htmlFor="lastDonation" className="block text-sm font-semibold text-stone-800 mb-2">
-                Date de votre dernier don <span className="font-normal text-stone-400">(facultatif)</span>
+                Date de votre dernier don <span className="font-normal text-stone-600">(facultatif)</span>
               </label>
               <input
                 id="lastDonation"
@@ -237,7 +237,7 @@ export default function EligibilityTest() {
                 max={new Date().toISOString().split('T')[0]}
                 className="w-full px-4 py-3 rounded-xl border-2 border-stone-200 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:outline-none focus:border-crimson"
               />
-              <p className="text-xs text-stone-400 mt-1.5 flex items-center gap-1">
+              <p className="text-xs text-stone-700 mt-1.5 flex items-center gap-1">
                 <HelpCircle className="w-3.5 h-3.5" /> Laissez vide si vous n'avez jamais donné.
               </p>
             </div>
@@ -317,7 +317,7 @@ export default function EligibilityTest() {
                 </div>
                 <button
                   onClick={reset}
-                  className="mt-5 w-full py-2.5 rounded-xl border-2 border-stone-200 text-sm font-medium text-stone-600 hover:bg-stone-50 transition-colors"
+                  className="mt-5 w-full py-2.5 rounded-xl border-2 border-stone-200 text-sm font-medium text-stone-700 hover:bg-stone-50 transition-colors"
                 >
                   Refaire le test
                 </button>

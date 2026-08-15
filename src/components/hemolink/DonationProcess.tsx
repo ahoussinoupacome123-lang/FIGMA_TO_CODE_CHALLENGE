@@ -142,7 +142,7 @@ export default function DonationProcess() {
                       <step.icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <span className="text-xs font-mono text-stone-400">ÉTAPE {step.num}</span>
+                      <span className="text-xs font-mono text-stone-700">ÉTAPE {step.num}</span>
                       <div className="flex items-center gap-2">
                         <h3 className="text-lg font-bold text-stone-900">{step.title}</h3>
                         <span className="text-xs bg-red-50 text-crimson font-medium px-2.5 py-0.5 rounded-full whitespace-nowrap">
@@ -154,7 +154,7 @@ export default function DonationProcess() {
                   <p className="text-stone-600 text-[15px] leading-relaxed mb-4">{step.desc}</p>
                   <ul className="space-y-1.5">
                     {step.tips.map((tip) => (
-                      <li key={tip} className="text-xs text-stone-500 flex items-start gap-2">
+                      <li key={tip} className="text-xs text-stone-700 flex items-start gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-crimson/40 mt-1.5 flex-shrink-0" />
                         {tip}
                       </li>
@@ -191,8 +191,8 @@ export default function DonationProcess() {
               <ul className="space-y-3">
                 {section.items.map((item) => (
                   <li key={item.text} className="flex items-start gap-3">
-                    <item.icon className="w-4.5 h-4.5 text-stone-400 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-stone-600 leading-relaxed">{item.text}</span>
+                    <item.icon className="w-4.5 h-4.5 text-stone-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-stone-700 leading-relaxed">{item.text}</span>
                   </li>
                 ))}
               </ul>

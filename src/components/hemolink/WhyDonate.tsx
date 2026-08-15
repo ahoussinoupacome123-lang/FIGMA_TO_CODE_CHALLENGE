@@ -49,7 +49,7 @@ function AnimatedCounter({ value, unit, icon: Icon, label }: (typeof stats)[0]) 
         {value}
         {unit && <span className="text-base font-medium text-crimson ml-1">{unit}</span>}
       </div>
-      <p className="text-sm text-stone-500 mt-1">{label}</p>
+      <p className="text-sm text-stone-700 mt-1">{label}</p>
     </motion.div>
   );
 }

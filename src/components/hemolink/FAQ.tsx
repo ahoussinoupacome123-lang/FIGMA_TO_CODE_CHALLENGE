@@ -97,7 +97,7 @@ export default function FAQ() {
                     aria-controls={`faq-answer-${globalIndex}`}
                   >
                     <HelpCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 transition-colors ${
-                      isOpen ? 'text-crimson' : 'text-stone-300'
+                      isOpen ? 'text-crimson' : 'text-stone-600'
                     }`} />
                     <span className={`flex-1 text-sm sm:text-[15px] font-medium leading-snug transition-colors ${
                       isOpen ? 'text-crimson' : 'text-stone-800'
@@ -105,7 +105,7 @@ export default function FAQ() {
                       {item.question}
                     </span>
                     <ChevronDown
-                      className={`w-4 h-4 text-stone-400 flex-shrink-0 mt-1 transition-transform duration-200 ${
+                      className={`w-4 h-4 text-stone-600 flex-shrink-0 mt-1 transition-transform duration-200 ${
                         isOpen ? 'rotate-180' : ''
                       }`}
                     />

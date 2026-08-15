@@ -112,7 +112,7 @@ export default function WhoCanDonate() {
             </div>
             <div>
               <h3 className="font-bold text-stone-900">Report temporaire</h3>
-              <p className="text-sm text-stone-500">Ces situations nécessitent d\'attendre avant de donner</p>
+              <p className="text-sm text-stone-700">Ces situations nécessitent d\'attendre avant de donner</p>
             </div>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -128,7 +128,7 @@ export default function WhoCanDonate() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-stone-500 mt-4">
+          <p className="text-xs text-stone-700 mt-4">
             <XCircle className="w-3.5 h-3.5 inline mr-1" />
             Seul un entretien médical professionnel peut confirmer votre aptitude au don.
             En cas de doute, présentez-vous au centre : le médecin tranchera.

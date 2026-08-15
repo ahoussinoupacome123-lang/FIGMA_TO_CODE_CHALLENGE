@@ -195,19 +195,19 @@ export default function Hero() {
           <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-stone-900 text-center border border-red-50">
             <div>
               <div className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">1 Don</div>
-              <div className="text-stone-500 text-xs sm:text-sm">= 3 vies sauvées</div>
+                <div className="text-stone-700 text-xs sm:text-sm">= 3 vies sauvées</div>
             </div>
             <div className="border-l border-stone-100 pl-4 sm:pl-0">
               <div className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">450ml</div>
-              <div className="text-stone-500 text-xs sm:text-sm">Volume d'un don</div>
+              <div className="text-stone-700 text-xs sm:text-sm">Volume d'un don</div>
             </div>
             <div className="border-l border-stone-100 pl-4 sm:pl-0">
               <div className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">24/7</div>
-              <div className="text-stone-500 text-xs sm:text-sm">Disponibilité centres</div>
+              <div className="text-stone-700 text-xs sm:text-sm">Disponibilité centres</div>
             </div>
             <div className="border-l border-stone-100 pl-4 sm:pl-0">
               <div className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">15 Min</div>
-              <div className="text-stone-500 text-xs sm:text-sm">Temps moyen du don</div>
+              <div className="text-stone-700 text-xs sm:text-sm">Temps moyen du don</div>
             </div>
           </div>
         </motion.div>

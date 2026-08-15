@@ -59,7 +59,7 @@ export default function Footer() {
                 <Droplets className="w-6 h-6 text-crimson-light" />
                 <span className="text-xl font-extrabold">HemoLink</span>
               </div>
-              <p className="text-sm text-stone-400 leading-relaxed mb-6">
+              <p className="text-sm text-white/80 leading-relaxed mb-6">
                 La plateforme solidaire du don de sang au Bénin. Facilitons ensemble l&apos;accès au sang pour tous ceux qui en ont besoin.
               </p>
               <div className="flex gap-3">
@@ -74,16 +74,16 @@ export default function Footer() {
 
             {/* Navigation */}
             <div>
-              <h4 className="font-bold text-sm mb-6">Menu</h4>
+                <h3 className="font-bold text-sm mb-6">Menu</h3>
               <ul className="space-y-4 text-sm">
                 {footerLinks.map((link) => (
                   <li key={link.href + link.label}>
                     {'external' in link && link.external ? (
-                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-colors inline-flex items-center gap-1">
+                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors inline-flex items-center gap-1">
                         {link.label} <ExternalLink className="w-3 h-3" />
                       </a>
                     ) : (
-                      <a href={link.href} className="text-stone-400 hover:text-white transition-colors">
+                      <a href={link.href} className="text-white/80 hover:text-white transition-colors">
                         {link.label}
                       </a>
                     )}
@@ -94,16 +94,16 @@ export default function Footer() {
 
             {/* Resources */}
             <div>
-              <h4 className="font-bold text-sm mb-6">Ressources</h4>
+              <h3 className="font-bold text-sm mb-6">Ressources</h3>
               <ul className="space-y-4 text-sm">
                 {resourceLinks.map((link) => (
                   <li key={link.href + link.label}>
                     {'external' in link && link.external ? (
-                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-colors inline-flex items-center gap-1">
+                      <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-white transition-colors inline-flex items-center gap-1">
                         {link.label} <ExternalLink className="w-3 h-3" />
                       </a>
                     ) : (
-                      <a href={link.href} className="text-stone-400 hover:text-white transition-colors">
+                      <a href={link.href} className="text-white/80 hover:text-white transition-colors">
                         {link.label}
                       </a>
                     )}
@@ -114,8 +114,8 @@ export default function Footer() {
 
             {/* Urgence */}
             <div>
-              <h4 className="font-bold text-sm mb-6">Urgence</h4>
-              <p className="text-stone-400 text-sm mb-4 leading-relaxed">
+              <h3 className="font-bold text-sm mb-6">Urgence</h3>
+              <p className="text-white/80 text-sm mb-4 leading-relaxed">
                 En cas d'urgence transfusionnelle, appelez immédiatement le numéro d'urgence national.
               </p>
               <a
@@ -130,14 +130,14 @@ export default function Footer() {
 
           {/* Medical disclaimer */}
           <div className="bg-white/5 rounded-2xl border border-white/5 p-5 mb-10">
-            <p className="text-xs text-stone-500 leading-relaxed">
-              <strong className="text-stone-400">Avertissement médical :</strong> Les informations présentées sur HemoLink sont fournies à titre indicatif et ne sauraient se substituer à un avis médical professionnel. Seul un médecin habilité peut confirmer votre aptitude au don de sang après un entretien clinique.
+            <p className="text-xs text-white/80 leading-relaxed">
+              <strong className="text-white/80">Avertissement médical :</strong> Les informations présentées sur HemoLink sont fournies à titre indicatif et ne sauraient se substituer à un avis médical professionnel. Seul un médecin habilité peut confirmer votre aptitude au don de sang après un entretien clinique.
             </p>
           </div>
 
           {/* Bottom bar */}
           <div className="border-t border-stone-800 pt-6 text-center">
-            <p className="text-xs text-stone-500">
+            <p className="text-xs text-white/70">
               © 2026 HemoLink Bénin. Tous droits réservés. Développé pour la solidarité nationale.
             </p>
           </div>

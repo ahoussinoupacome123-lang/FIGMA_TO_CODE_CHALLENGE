@@ -133,10 +133,10 @@ export default function CenterMap({
             <Popup>
               <div className="text-sm">
                 <div className="font-bold text-stone-900">{c.name}</div>
-                <div className="text-stone-500 text-xs mt-0.5">{c.address}, {c.city}</div>
+                <div className="text-stone-700 text-xs mt-0.5">{c.address}, {c.city}</div>
                 <div className="flex items-center gap-1.5 mt-2">
-                  <span className={`w-2 h-2 rounded-full ${c.isOpen ? 'bg-emerald-500' : 'bg-stone-400'}`} />
-                  <span className={`text-xs font-medium ${c.isOpen ? 'text-emerald-600' : 'text-stone-500'}`}>
+                  <span className={`w-2 h-2 rounded-full ${c.isOpen ? 'bg-emerald-500' : 'bg-stone-600'}`} />
+                  <span className={`text-xs font-medium ${c.isOpen ? 'text-emerald-600' : 'text-stone-700'}`}>
                     {c.isOpen ? 'Ouvert' : 'Fermé'}
                   </span>
                 </div>

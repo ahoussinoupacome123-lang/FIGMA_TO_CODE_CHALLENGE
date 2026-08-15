@@ -76,12 +76,12 @@ export default function BloodReserves() {
                 className='w-3 h-3 rounded-full'
                 style={{ backgroundColor: getLevelColor(level) }}
               />
-              <span className='text-xs text-stone-500'>{getLevelLabel(level)}</span>
+              <span className='text-xs text-stone-700'>{getLevelLabel(level)}</span>
             </div>
           ))}
         </div>
 
-        <p className='text-center text-xs text-stone-400 mt-6'>
+        <p className='text-center text-xs text-stone-700 mt-6'>
           <Droplets className='w-3.5 h-3.5 inline mr-1' />
           Données indicatives mises à jour régulièrement. Consultez le CNTS pour les données officielles.
         </p>

@@ -28,7 +28,7 @@ const CenterMap = dynamic(() => import('./CenterMap'), {
     <div className="w-full h-full min-h-[350px] lg:min-h-[500px] rounded-2xl bg-stone-100 flex items-center justify-center">
       <div className="text-center">
         <div className="w-8 h-8 border-3 border-crimson border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-        <p className="text-sm text-stone-500">Chargement de la carte...</p>
+          <p className="text-sm text-stone-700">Chargement de la carte...</p>
       </div>
     </div>
   ),
@@ -122,7 +122,7 @@ export default function CenterDirectory() {
         <div className="max-w-3xl mx-auto mb-6">
           <div className="flex gap-3">
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-600" />
               <input
                 type="text"
                 placeholder="Rechercher par ville, nom..."
@@ -181,7 +181,7 @@ export default function CenterDirectory() {
                 <span>{geoStatus === 'granted' ? 'Localisé' : geoStatus === 'requesting' ? 'Localisation...' : 'Utiliser ma position'}</span>
               </button>
               <span className="text-stone-300">|</span>
-              <p className="text-sm text-stone-500">
+              <p className="text-sm text-stone-700">
                 <span className="font-semibold text-stone-700">{filtered.length}</span> centre{filtered.length !== 1 ? 's' : ''} trouvé{filtered.length !== 1 ? 's' : ''}
               </p>
             </div>
@@ -214,14 +214,14 @@ export default function CenterDirectory() {
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="city-filter" className="block text-xs font-medium text-stone-500 mb-1.5">Ville</label>
+                    <label htmlFor="city-filter" className="block text-xs font-medium text-stone-700 mb-1.5">Ville</label>
                     <select id="city-filter" value={cityFilter} onChange={(e) => setCityFilter(e.target.value)} className="w-full px-3 py-2.5 rounded-lg border border-stone-200 text-sm text-stone-900 bg-white focus:outline-none focus:border-crimson">
                       <option value="">Toutes les villes</option>
                       {cities.map((c) => <option key={c} value={c}>{c}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="type-filter" className="block text-xs font-medium text-stone-500 mb-1.5">Type de don</label>
+                    <label htmlFor="type-filter" className="block text-xs font-medium text-stone-700 mb-1.5">Type de don</label>
                     <select id="type-filter" value={typeFilter} onChange={(e) => setTypeFilter(e.target.value as DonationType | '')} className="w-full px-3 py-2.5 rounded-lg border border-stone-200 text-sm text-stone-900 bg-white focus:outline-none focus:border-crimson">
                       <option value="">Tous les types</option>
                       {donationTypes.map((t) => <option key={t} value={t}>{donationTypeLabels[t]}</option>)}
@@ -238,7 +238,7 @@ export default function CenterDirectory() {
           <div className="text-center py-16">
             <MapPin className="w-12 h-12 text-stone-300 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-stone-700 mb-2">Aucun centre trouvé</h3>
-            <p className="text-sm text-stone-500 mb-4">Essayez d'élargir vos critères de recherche.</p>
+            <p className="text-sm text-stone-700 mb-4">Essayez d'élargir vos critères de recherche.</p>
             <button onClick={clearFilters} className="text-sm text-crimson font-medium hover:text-crimson-dark">Réinitialiser les filtres</button>
           </div>
         )}
@@ -273,7 +273,7 @@ function ViewButton({ active, onClick, label, icon, hidden }: { active: boolean;
   return (
     <button
       onClick={onClick}
-      className={"hidden " + (hidden ? 'sm:hidden' : 'sm:flex') + ' items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ' + (active ? 'bg-white text-stone-900 shadow-sm' : 'text-stone-500 hover:text-stone-700')}
+      className={"hidden " + (hidden ? 'sm:hidden' : 'sm:flex') + ' items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all ' + (active ? 'bg-white text-stone-900 shadow-sm' : 'text-stone-700 hover:text-stone-900')}
       role="radio"
       aria-checked={active}
     >
@@ -286,21 +286,21 @@ function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; i
   return (
     <motion.div layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ delay: index * 0.03 }} className="bg-white rounded-2xl border border-stone-100 overflow-hidden hover:shadow-md transition-shadow">
       <button onClick={onToggle} className="w-full text-left p-5 sm:p-6 flex items-start gap-4" aria-expanded={isExpanded}>
-        <div className={"flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center " + (center.isOpen ? 'bg-emerald-50 text-emerald-600' : 'bg-stone-100 text-stone-400')}>
+        <div className={"flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center " + (center.isOpen ? 'bg-emerald-50 text-emerald-600' : 'bg-stone-100 text-stone-600')}>
           <MapPin className="w-5 h-5" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-3">
             <div>
               <h3 className="font-bold text-stone-900 text-sm sm:text-base leading-snug">{center.name}</h3>
-              <p className="text-stone-500 text-xs sm:text-sm mt-1">{center.address}, {center.city}</p>
+              <p className="text-stone-700 text-xs sm:text-sm mt-1">{center.address}, {center.city}</p>
             </div>
             <div className="flex items-center gap-2 flex-shrink-0">
-              <span className={"inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full " + (center.isOpen ? 'bg-emerald-50 text-emerald-700' : 'bg-stone-100 text-stone-500')}>
-                <span className={"w-1.5 h-1.5 rounded-full " + (center.isOpen ? 'bg-emerald-500 pulse-dot' : 'bg-stone-400')} />
+              <span className={"inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full " + (center.isOpen ? 'bg-emerald-50 text-emerald-700' : 'bg-stone-100 text-stone-700')}>
+                <span className={"w-1.5 h-1.5 rounded-full " + (center.isOpen ? 'bg-emerald-500 pulse-dot' : 'bg-stone-600')} />
                 {center.isOpen ? 'Ouvert' : "Fermé"}
               </span>
-              <ChevronDown className={"w-4 h-4 text-stone-400 transition-transform " + (isExpanded ? 'rotate-180' : '')} />
+              <ChevronDown className={"w-4 h-4 text-stone-600 transition-transform " + (isExpanded ? 'rotate-180' : '')} />
             </div>
           </div>
           <div className="flex flex-wrap gap-2 mt-3">
@@ -329,7 +329,7 @@ function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; i
                     {center.hours.map((h) => (
                       <div key={h.jours} className="flex items-center justify-between text-sm">
                         <span className="text-stone-600">{h.jours}</span>
-                        <span className={"font-medium " + (h.horaires === "Fermé" ? 'text-stone-400' : 'text-stone-900')}>{h.horaires}</span>
+                        <span className={"font-medium " + (h.horaires === "Fermé" ? 'text-stone-600' : 'text-stone-900')}>{h.horaires}</span>
                       </div>
                     ))}
                   </div>
@@ -340,15 +340,15 @@ function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; i
                       <Droplets className="w-4 h-4 text-crimson" />
                       <span className="text-sm font-semibold text-stone-800">Informations</span>
                     </div>
-                    <p className="text-sm text-stone-500 mb-1">{center.nature}</p>
+                    <p className="text-sm text-stone-700 mb-1">{center.nature}</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <Phone className="w-4 h-4 text-stone-400" />
+                      <Phone className="w-4 h-4 text-stone-600" />
                       <a href={"tel:" + center.phone.replace(/\s/g, '')} className="text-sm text-crimson hover:underline">{center.phone}</a>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4 text-stone-400" />
+                      <Mail className="w-4 h-4 text-stone-600" />
                       <a href={"mailto:" + center.email} className="text-sm text-crimson hover:underline">{center.email}</a>
                     </div>
                   </div>

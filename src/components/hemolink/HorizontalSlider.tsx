@@ -128,9 +128,9 @@ export default function HorizontalSlider({ children }: { children: ReactNode }) 
               }
             }}
           >
-            <summary className="flex items-center justify-between px-4 py-3 cursor-pointer list-none text-sm font-medium">
+              <summary className="flex items-center justify-between px-4 py-3 cursor-pointer list-none text-sm font-medium">
               <span>{metas[i]}</span>
-              <span className="text-stone-400">{active === i ? '−' : '+'}</span>
+              <span className="text-stone-700">{active === i ? '−' : '+'}</span>
             </summary>
             <div className="px-4 pb-4 pt-2">
               {s}
