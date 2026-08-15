@@ -64,28 +64,26 @@ export default function Navigation() {
         const details = Array.from(slider.querySelectorAll('details')) as HTMLDetailsElement[];
         if (details.length) details.forEach((d, i) => { d.open = i === idx; });
 
-        // Wait for horizontal scroll to reach target then vertical slide
-        const start = performance.now();
-        const tick = () => {
-          const now = performance.now();
-          const elapsed = now - start;
-          const current = slider.scrollLeft;
-          if (Math.abs(current - targetLeft) < 4 || elapsed > 900) {
-            try {
+        // Poll until horizontal scroll finishes or the section is visible, then vertically center it
+        const start = Date.now();
+        const iv = setInterval(() => {
+          try {
+            const rect = section.getBoundingClientRect();
+            const reached = Math.abs((slider.scrollLeft || 0) - targetLeft) < 6;
+            const visible = rect.top >= 0 && rect.top < window.innerHeight;
+            if (reached || visible || Date.now() - start > 1200) {
+              clearInterval(iv);
               const headerH = document.querySelector('header')?.clientHeight || 80;
-              const rect = section.getBoundingClientRect();
               const targetY = window.scrollY + rect.top - Math.min(headerH + 24, Math.round(window.innerHeight * 0.15));
               section.setAttribute('tabindex', '-1');
               window.scrollTo({ top: targetY, behavior: 'smooth' });
               (section as HTMLElement).focus();
-            } catch (e) {
-              // ignore
             }
-            return;
+          } catch (e) {
+            clearInterval(iv);
           }
-          requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
+        }, 50);
+        setTimeout(() => clearInterval(iv), 1500);
       } else {
         // Regular section outside slider — vertical slide
         setTimeout(() => {
