@@ -209,6 +209,19 @@
   transform: scale(1.02);
 }
 
+/* Mobile scroll optimization */
+@media (max-width: 640px) {
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+  details {
+    will-change: contents;
+  }
+  details[open] {
+    will-change: unset;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

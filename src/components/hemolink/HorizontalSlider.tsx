@@ -106,11 +106,11 @@ export default function HorizontalSlider({ children }: { children: ReactNode }) 
   return (
     <div className="relative py-6">
       {/* Mobile: accordion grouped list */}
-      <div className="sm:hidden px-4">
+      <div className="sm:hidden px-4 pb-4">
         {slides.map((s, i) => (
           <details
             key={i}
-            className="mb-3 bg-white rounded-xl border border-stone-200 overflow-hidden"
+            className="mb-3 bg-white rounded-xl border border-stone-200 overflow-hidden transition-all duration-300 ease-out"
             onToggle={(e) => {
               const el = e.target as HTMLDetailsElement;
               if (el.open) {
@@ -121,18 +121,18 @@ export default function HorizontalSlider({ children }: { children: ReactNode }) 
                 others.forEach((d) => { if (d !== el) d.open = false; });
                 // update active index and scroll the matching slide into view when opening
                 setActive(i);
-                setTimeout(() => scrollTo(i), 120);
+                setTimeout(() => scrollTo(i), 150);
               } else {
                 // if closed, clear active if it was the same
                 if (active === i) setActive(0);
               }
             }}
           >
-              <summary className="flex items-center justify-between px-4 py-3 cursor-pointer list-none text-sm font-medium">
+              <summary className="flex items-center justify-between px-4 py-3 cursor-pointer list-none text-sm font-medium hover:bg-stone-50 transition-colors">
               <span>{metas[i]}</span>
-              <span className="text-stone-700">{active === i ? '−' : '+'}</span>
+              <span className="text-stone-700 transition-transform duration-300">{active === i ? '−' : '+'}</span>
             </summary>
-            <div className="px-4 pb-4 pt-2">
+            <div className="px-4 pb-4 pt-2 animate-in fade-in duration-200">
               {s}
             </div>
           </details>

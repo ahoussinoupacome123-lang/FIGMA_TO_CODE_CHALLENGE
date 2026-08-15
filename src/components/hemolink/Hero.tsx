@@ -5,7 +5,7 @@ import { Droplets, ShieldCheck, UserMinus, RefreshCw } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen sm:min-h-screen flex items-center overflow-hidden pt-16 sm:pt-0">
       {/* Animated SVG flow lines */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1440 800" preserveAspectRatio="none">
