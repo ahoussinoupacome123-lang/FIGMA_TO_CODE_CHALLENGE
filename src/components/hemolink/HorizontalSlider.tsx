@@ -11,6 +11,14 @@ export default function HorizontalSlider({ children }: { children: ReactNode }) 
   // Titles extracted from wrapper `data-title` attribute when present
   const metas = slides.map((s) => (s as any)?.props?.['data-title'] || 'Info');
 
+  const scrollTo = (index: number) => {
+    const el = containerRef.current;
+    if (!el) return;
+    const kid = el.children[index] as HTMLElement | undefined;
+    if (!kid) return;
+    el.scrollTo({ left: kid.offsetLeft, behavior: 'smooth' });
+  };
+
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -93,13 +101,7 @@ export default function HorizontalSlider({ children }: { children: ReactNode }) 
     };
   }, [active, children]);
 
-  const scrollTo = (index: number) => {
-    const el = containerRef.current;
-    if (!el) return;
-    const kid = el.children[index] as HTMLElement | undefined;
-    if (!kid) return;
-    el.scrollTo({ left: kid.offsetLeft, behavior: 'smooth' });
-  };
+  
 
   return (
     <div className="relative py-6">
