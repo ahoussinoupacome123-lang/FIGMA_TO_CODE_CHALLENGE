@@ -63,12 +63,35 @@ export default function Navigation() {
         const kids = Array.from(slider.children) as HTMLElement[];
         let idx = kids.findIndex((k) => k.contains(section));
         if (idx === -1) idx = 0;
+        // Scroll horizontally to the slide
         slider.scrollTo({ left: kids[idx].offsetLeft, behavior: 'smooth' });
         // On mobile, open the corresponding <details>
         const details = Array.from(slider.querySelectorAll('details')) as HTMLDetailsElement[];
         if (details.length) {
           details.forEach((d, i) => { d.open = i === idx; });
         }
+
+        // Ensure the target section receives focus and is visible vertically
+        setTimeout(() => {
+          try {
+            section.setAttribute('tabindex', '-1');
+            section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            (section as HTMLElement).focus();
+          } catch (e) {
+            // ignore
+          }
+        }, 350);
+      } else {
+        // Not inside slider: let normal anchor work but ensure smooth scroll + focus
+        setTimeout(() => {
+          try {
+            section.setAttribute('tabindex', '-1');
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            (section as HTMLElement).focus();
+          } catch (e) {
+            // ignore
+          }
+        }, 50);
       }
     };
     document.addEventListener('click', handler);
