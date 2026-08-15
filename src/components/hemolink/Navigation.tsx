@@ -63,27 +63,38 @@ export default function Navigation() {
         const kids = Array.from(slider.children) as HTMLElement[];
         let idx = kids.findIndex((k) => k.contains(section));
         if (idx === -1) idx = 0;
+        const targetLeft = kids[idx].offsetLeft;
         // Scroll horizontally to the slide
-        slider.scrollTo({ left: kids[idx].offsetLeft, behavior: 'smooth' });
+        slider.scrollTo({ left: targetLeft, behavior: 'smooth' });
         // On mobile, open the corresponding <details>
         const details = Array.from(slider.querySelectorAll('details')) as HTMLDetailsElement[];
         if (details.length) {
           details.forEach((d, i) => { d.open = i === idx; });
         }
 
-        // Ensure the target section receives focus and is visible vertically with a sliding effect
-        setTimeout(() => {
-          try {
-            const headerH = document.querySelector('header')?.clientHeight || 80;
-            const rect = section.getBoundingClientRect();
-            const targetY = window.scrollY + rect.top - Math.min(headerH + 24, Math.round(window.innerHeight * 0.15));
-            section.setAttribute('tabindex', '-1');
-            window.scrollTo({ top: targetY, behavior: 'smooth' });
-            (section as HTMLElement).focus();
-          } catch (e) {
-            // ignore
+        // Wait until horizontal scroll is near targetLeft, then perform vertical slide
+        const start = performance.now();
+        const tick = () => {
+          const now = performance.now();
+          const elapsed = now - start;
+          const current = slider.scrollLeft;
+          if (Math.abs(current - targetLeft) < 4 || elapsed > 900) {
+            try {
+              const headerH = document.querySelector('header')?.clientHeight || 80;
+              const rect = section.getBoundingClientRect();
+              const targetY = window.scrollY + rect.top - Math.min(headerH + 24, Math.round(window.innerHeight * 0.15));
+              section.setAttribute('tabindex', '-1');
+              window.scrollTo({ top: targetY, behavior: 'smooth' });
+              (section as HTMLElement).focus();
+            } catch (e) {
+              // ignore
+            }
+            return;
           }
-        }, 350);
+          requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
       } else {
         // Not inside slider: let normal anchor work but ensure smooth scroll + focus
         setTimeout(() => {
