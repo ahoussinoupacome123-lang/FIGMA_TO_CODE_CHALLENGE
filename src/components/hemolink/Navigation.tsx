@@ -94,7 +94,6 @@ export default function Navigation() {
           requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
-      }
       } else {
         // Not inside slider: let normal anchor work but ensure smooth scroll + focus
         setTimeout(() => {
