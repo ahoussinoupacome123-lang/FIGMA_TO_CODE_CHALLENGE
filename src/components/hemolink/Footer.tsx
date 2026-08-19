@@ -21,7 +21,7 @@ export default function Footer() {
       <div className="gradient-hero py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
-            <Heart className="w-4 h-4 text-orange-300" />
+            <Heart className="w-4 h-4 text-orange-300" aria-hidden="true" />
             <span className="text-white/90 text-sm font-medium">Prêt à sauver des vies ?</span>
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 max-w-2xl mx-auto leading-tight">

@@ -14,7 +14,7 @@ export default function BloodReserves() {
   return (
     <section id='reserves' className='py-20 sm:py-28 bg-cream'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div ref={ref} className='text-center max-w-2xl mx-auto mb-12'>
+        <div ref={ref} className='text-center max-w-2xl mx-auto mb-16'>
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -50,7 +50,7 @@ export default function BloodReserves() {
             className='bg-red-50 border border-red-200/60 rounded-2xl p-4 sm:p-5 mb-10 flex items-start gap-4'
             role='alert'
           >
-            <AlertTriangle className='w-5 h-5 text-crimson flex-shrink-0 mt-0.5' />
+            <AlertTriangle className='w-5 h-5 text-crimson flex-shrink-0 mt-0.5' aria-hidden='true' />
             <div>
               <p className='text-sm font-semibold text-red-800'>
                 {criticalCount} groupe{criticalCount > 1 ? 's sanguin' : ' sanguin'} en niveau critique
@@ -83,7 +83,7 @@ export default function BloodReserves() {
         </div>
 
         <p className='text-center text-xs text-stone-700 mt-6'>
-          <Droplets className='w-3.5 h-3.5 inline mr-1' />
+          <Droplets className='w-3.5 h-3.5 inline mr-1' aria-hidden='true' />
           Données indicatives mises à jour régulièrement. Consultez le CNTS pour les données officielles.
         </p>
       </div>

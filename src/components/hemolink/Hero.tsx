@@ -104,7 +104,7 @@ export default function Hero() {
             >
               <a
                 href="#test"
-                className="group inline-flex items-center justify-center gap-2 bg-coral hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl text-lg transition-all shadow-xl"
+                className="group inline-flex items-center justify-center gap-2 bg-coral hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl text-lg transition-all shadow-xl active:scale-[0.98]"
               >
                 Vérifier mon éligibilité
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
@@ -132,7 +132,7 @@ export default function Hero() {
                 { icon: RefreshCw, label: 'Mis à jour en temps réel' },
               ].map(({ icon: Icon, label }) => (
                 <li key={label} className="flex items-center gap-2 text-white/70 text-sm">
-                  <Icon className="w-4 h-4 text-orange-300" />
+                  <Icon className="w-4 h-4 text-orange-300" aria-hidden="true" />
                   <span>{label}</span>
                 </li>
               ))}
@@ -163,6 +163,7 @@ export default function Hero() {
                 <Droplets
                   className="text-[280px] text-white/90 heartbeat"
                   strokeWidth={0.5}
+                  aria-hidden="true"
                   style={{ filter: 'drop-shadow(0 0 40px rgba(249, 115, 22, 0.3))' }}
                 />
               </motion.div>
@@ -172,14 +173,14 @@ export default function Hero() {
                 animate={{ y: [0, -8, 0], opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <Droplets className="w-8 h-8 text-white/40" strokeWidth={1.5} />
+                <Droplets className="w-8 h-8 text-white/40" strokeWidth={1.5} aria-hidden="true" />
               </motion.div>
               <motion.div
                 className="absolute -bottom-2 -left-6"
                 animate={{ y: [0, 6, 0], opacity: [0.3, 0.7, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
               >
-                <Droplets className="w-6 h-6 text-white/30" strokeWidth={1.5} />
+                <Droplets className="w-6 h-6 text-white/30" strokeWidth={1.5} aria-hidden="true" />
               </motion.div>
             </div>
           </div>

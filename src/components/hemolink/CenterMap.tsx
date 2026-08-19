@@ -69,7 +69,7 @@ export default function CenterMap({
   const { status, locate } = useGeo();
 
   return (
-    <div className="relative w-full h-full min-h-[350px] rounded-2xl overflow-hidden shadow-2xl ring-4 ring-red-50" role="region" aria-label="Carte des centres de don de sang au Bénin">
+    <div className="relative w-full h-full min-h-[350px] rounded-2xl overflow-hidden shadow-2xl ring-4 ring-red-50" role="region" aria-label="Carte des centres de don de sang au Bénin" lang="fr">
       {/* Geolocation button */}
       <button
         onClick={locate}

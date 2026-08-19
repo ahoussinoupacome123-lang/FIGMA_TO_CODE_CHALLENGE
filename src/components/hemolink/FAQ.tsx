@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useMemo } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { faqItems, faqCategories } from '@/data/faq';
@@ -16,7 +16,7 @@ export default function FAQ() {
       ? faqItems
       : faqItems.filter((item) => item.category === activeCategory);
 
-  const categoryIds = ['all', ...faqCategories.map((c) => c.id)];
+  const categoryIds = useMemo(() => ['all', ...faqCategories.map((c) => c.id)], []);
 
   const handleCategoryKeys = useCallback(
     (e: React.KeyboardEvent, currentIndex: number) => {
@@ -45,7 +45,7 @@ export default function FAQ() {
   return (
     <section id='faq' className='py-20 sm:py-28 gradient-crimson-soft'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div ref={ref} className='text-center max-w-2xl mx-auto mb-12'>
+        <div ref={ref} className='text-center max-w-2xl mx-auto mb-16'>
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -135,6 +135,7 @@ export default function FAQ() {
                     className='w-full text-left px-5 sm:px-6 py-4 sm:py-5 flex items-start gap-3 hover:bg-stone-50/50 transition-colors'
                     aria-expanded={isOpen}
                     aria-controls={`faq-answer-${globalIndex}`}
+                    id={`faq-question-${globalIndex}`}
                   >
                     <HelpCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 transition-colors ${
                       isOpen ? 'text-crimson' : 'text-stone-600'
@@ -154,6 +155,8 @@ export default function FAQ() {
                     {isOpen && (
                       <motion.div
                         id={`faq-answer-${globalIndex}`}
+                        role="region"
+                        aria-labelledby={`faq-question-${globalIndex}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}

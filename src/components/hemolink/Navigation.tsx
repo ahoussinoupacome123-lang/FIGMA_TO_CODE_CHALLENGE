@@ -8,11 +8,8 @@ const navLinks = [
   { href: '#pourquoi', label: 'Pourquoi ?' },
   { href: '#eligibilite', label: 'Qui peut donner ?' },
   { href: '#test', label: "Test d'éligibilité" },
-  { href: '#deroulement', label: 'Processus' },
-  { href: '#preparation', label: 'Préparation' },
-  { href: '#reserves', label: 'Réserves' },
+  { href: '#deroulement', label: 'Le don' },
   { href: '#faq', label: 'FAQ' },
-  { href: '#centres', label: 'Centres' },
 ];
 
 export default function Navigation() {

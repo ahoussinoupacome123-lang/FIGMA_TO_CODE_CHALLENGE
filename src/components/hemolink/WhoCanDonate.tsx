@@ -89,7 +89,7 @@ export default function WhoCanDonate() {
               <div className={`flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center ${
                 c.valid ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-crimson'
               }`}>
-                <c.icon className="w-5 h-5" />
+                <c.icon className="w-5 h-5" aria-hidden="true" />
               </div>
               <div>
                 <h3 className="font-semibold text-stone-900 mb-1">{c.title}</h3>
@@ -108,7 +108,7 @@ export default function WhoCanDonate() {
         >
           <div className="flex items-center gap-3 mb-5">
             <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
-              <AlertCircle className="w-5 h-5 text-amber-700" />
+              <AlertCircle className="w-5 h-5 text-amber-700" aria-hidden="true" />
             </div>
             <div>
               <h3 className="font-bold text-stone-900">Report temporaire</h3>

@@ -44,7 +44,7 @@ function AnimatedCounter({ value, unit, icon: Icon, label }: (typeof stats)[0]) 
     >
       <dl>
         <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-red-50 text-crimson mb-3">
-          <Icon className="w-6 h-6" />
+          <Icon className="w-6 h-6" aria-hidden="true" />
         </div>
         <dt className="text-3xl sm:text-4xl font-bold text-stone-900">
           {value}
@@ -97,6 +97,7 @@ export default function WhyDonate() {
           {stats.map((stat) => (
             <AnimatedCounter key={stat.value} {...stat} />
           ))}
+          {/* aria-hidden decorative icons are handled inside AnimatedCounter */}
         </div>
 
         {/* Impact cards - middle one featured */}
@@ -117,7 +118,7 @@ export default function WhyDonate() {
               <div className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl mb-5 ${
                 i === 1 ? 'bg-white/20 text-white' : 'gradient-crimson text-white'
               }`}>
-                <item.icon className="w-6 h-6" />
+                <item.icon className="w-6 h-6" aria-hidden="true" />
               </div>
               <h3 className={`text-lg font-bold mb-3 ${i === 1 ? 'text-white' : 'text-stone-900'}`}>{item.title}</h3>
               <p className={`leading-relaxed text-[15px] ${i === 1 ? 'text-white/80' : 'text-stone-600'}`}>{item.desc}</p>

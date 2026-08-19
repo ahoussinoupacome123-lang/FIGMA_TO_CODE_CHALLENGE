@@ -4,7 +4,6 @@ import WhyDonate from '@/components/hemolink/WhyDonate';
 import WhoCanDonate from '@/components/hemolink/WhoCanDonate';
 import EligibilityTest from '@/components/hemolink/EligibilityTest';
 import DonationProcess from '@/components/hemolink/DonationProcess';
-import PreparationGuide from '@/components/hemolink/PreparationGuide';
 import CenterDirectory from '@/components/hemolink/CenterDirectory';
 import BloodReserves from '@/components/hemolink/BloodReserves';
 import FAQ from '@/components/hemolink/FAQ';
@@ -15,8 +14,7 @@ const tabs = [
   { id: 'pourquoi', label: 'Pourquoi ?' },
   { id: 'eligibilite', label: 'Qui peut donner ?' },
   { id: 'test', label: "Test d'éligibilité" },
-  { id: 'deroulement', label: 'Processus' },
-  { id: 'preparation', label: 'Préparation' },
+  { id: 'deroulement', label: 'Le don' },
   { id: 'reserves', label: 'Réserves' },
   { id: 'faq', label: 'FAQ' },
 ];
@@ -32,7 +30,6 @@ export default function Home() {
           <WhoCanDonate />
           <EligibilityTest />
           <DonationProcess />
-          <PreparationGuide />
           <BloodReserves />
           <FAQ />
         </SectionTabs>

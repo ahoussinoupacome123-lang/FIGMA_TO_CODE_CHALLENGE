@@ -72,10 +72,6 @@ export default function CenterDirectory() {
 
   const handleLocate = () => {
     locate();
-    // Watch for status change to show toast
-    const check = setInterval(() => {
-      clearInterval(check);
-    }, 500);
   };
 
   const hasResults = filtered.length > 0;
@@ -84,7 +80,7 @@ export default function CenterDirectory() {
     <section id="centres" className="py-20 sm:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div ref={ref} className="text-center max-w-2xl mx-auto mb-12">
+        <div ref={ref} className="text-center max-w-2xl mx-auto mb-16">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -174,7 +170,7 @@ export default function CenterDirectory() {
                 <span>{geoStatus === 'granted' ? 'Localisé' : geoStatus === 'requesting' ? 'Localisation...' : 'Utiliser ma position'}</span>
               </button>
               <span className="text-stone-300">|</span>
-              <p className="text-sm text-stone-700">
+              <p className="text-sm text-stone-700" aria-live="polite">
                 <span className="font-semibold text-stone-700">{filtered.length}</span> centre{filtered.length !== 1 ? 's' : ''} trouvé{filtered.length !== 1 ? 's' : ''}
               </p>
             </div>

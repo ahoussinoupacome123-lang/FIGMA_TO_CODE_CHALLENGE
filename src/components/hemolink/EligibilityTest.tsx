@@ -90,7 +90,7 @@ export default function EligibilityTest() {
   return (
     <section id="test" className="py-20 sm:py-28 gradient-crimson-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className="text-center max-w-2xl mx-auto mb-12">
+        <div ref={ref} className="text-center max-w-2xl mx-auto mb-16">
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -132,13 +132,29 @@ export default function EligibilityTest() {
               <label id="gender-label" className="block text-sm font-semibold text-stone-800 mb-3">
                 Genre
               </label>
-              <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-labelledby="gender-label">
+              <div
+                className="grid grid-cols-2 gap-3"
+                role="radiogroup"
+                aria-labelledby="gender-label"
+                onKeyDown={(e) => {
+                  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    setGender('femme');
+                    setErrors((prev) => ({ ...prev, gender: '' }));
+                  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    setGender('homme');
+                    setErrors((prev) => ({ ...prev, gender: '' }));
+                  }
+                }}
+              >
                 {['homme', 'femme'].map((g) => (
                   <button
                     key={g}
                     type="button"
                     role="radio"
                     aria-checked={gender === g}
+                    tabIndex={gender === g || (!gender && g === 'homme') ? 0 : -1}
                     onClick={() => { setGender(g as 'homme' | 'femme'); setErrors((prev) => ({ ...prev, gender: '' })); }}
                     className={`py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all ${
                       gender === g
