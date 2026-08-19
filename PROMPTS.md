@@ -2,6 +2,10 @@
 
 Ce fichier documente les instructions que j'ai données pour construire HemoLink dans le cadre du Figma to Code Challenge — Édition 4.
 
+## Outil d'IA utilisé
+
+**OpenCode** (powered by Claude) — assistant IA en ligne de commande pour le développement logiciel. Utilisé pour la génération de code, l'itération rapide, le debugging et la documentation.
+
 ---
 
 ## Prompt 1 — Initialisation du projet et stack technique
@@ -91,3 +95,31 @@ Framer Motion modifie le z-index des éléments du DOM, ce qui peut cacher les t
 ### Géolocalisation : communication entre composants
 
 Le bouton "Utiliser ma position" est dans `CenterDirectory` (panel de recherche) mais la logique de géolocalisation est dans `CenterMap` (composant dynamique). Solution : exposer la fonction `locate` via un global window (`__hemolink_locate`) depuis CenterMap, et l'appeler depuis CenterDirectory.
+
+---
+
+## Limites rencontrées avec l'outil IA
+
+### Données statiques vs temps réel
+
+L'IA ne peut pas fournir de données en temps réel sur les réserves sanguines ou les statuts d'ouverture des centres. Toutes les données sont fictives et à titre indicatif. L'IA a aidé à structurer les types TypeScript et les interfaces, mais les valeurs réelles doivent être fournies par une source officielle.
+
+### Conflits de z-index (Leaflet + Framer Motion)
+
+L'IA a initialisé le code sans anticiper le conflit entre les z-index de Framer Motion et les tuiles de Leaflet. Le diagnostic et la correction (CSS ciblé sur `.leaflet-tile-pane`) ont nécessité des itérations manuelles. L'IA ne pouvait pas reproduire le bug visuellement.
+
+### Navigation vers sections dans un composant à onglets
+
+La migration du `HorizontalSlider` vers `SectionTabs` a créé un défi de navigation : les liens d'ancrage du footer et de la navigation devaient non seulement changer l'onglet actif mais aussi scroller verticalement la section dans le viewport. L'IA a proposé plusieurs approches (polling du slider, scroll programmatique) avant d'aboutir à la solution finale combinant `requestAnimationFrame` et calcul de offsets.
+
+### Géolocalisation : séparation des composants
+
+Le bouton de géolocalisation et le composant carte sont dans des fichiers différents, dynamiquement importés. L'IA a proposé d'abord un pattern `window.__hemolink_locate` (global) avant de converger vers un `GeoProvider` React context — plus propre mais nécessitant un restructurage de l'arbre de composants.
+
+### Accessibilité des composants animés
+
+L'IA génère naturellement des `<div>` pour tout. L'audit a11y a révélé l'absence de `role="progressbar"`, `role="radiogroup"`, `aria-checked`, etc. sur des composants qui semblaient fonctionnels. Ces corrections ont nécessité un audit manuel systématique que l'IA seule ne couvrait pas.
+
+### Performance mobile
+
+Les animations Framer Motion avec `whileInView` sur mobile peuvent causer des saccades. L'ajout de `prefers-reduced-motion` dans le CSS et l'optimisation du scrolling sur iOS (`-webkit-overflow-scrolling: touch`) ont été des ajustements manuels post-itération.

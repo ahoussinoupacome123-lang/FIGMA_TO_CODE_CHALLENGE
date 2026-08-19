@@ -21,7 +21,7 @@ const criteria = [
   {
     icon: Calendar,
     title: 'Délai respecté entre les dons',
-    desc: '8 semaines minimum entre deux dons de sang total. 4 semaines pour un don de plasma. Ces délais permettent à votre organisme de reconstituer ses réserves.',
+    desc: '3 mois minimum entre deux dons pour les hommes, 4 mois pour les femmes. Ces délais permettent à votre organisme de reconstituer ses réserves.',
     valid: true,
   },
   {
