@@ -276,7 +276,7 @@ function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; i
     <motion.div layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ delay: index * 0.03 }} className="bg-white rounded-2xl border border-stone-100 overflow-hidden hover:shadow-md transition-shadow">
       <button onClick={onToggle} className="w-full text-left p-5 sm:p-6 flex items-start gap-4" aria-expanded={isExpanded} aria-controls={`center-details-${center.id}`}>
         <div className={"flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center " + (center.isOpen ? 'bg-emerald-50 text-emerald-600' : 'bg-stone-100 text-stone-600')}>
-          <MapPin className="w-5 h-5" />
+          <MapPin className="w-5 h-5" aria-hidden="true" />
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-3">
@@ -289,7 +289,7 @@ function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; i
                 <span className={"w-1.5 h-1.5 rounded-full " + (center.isOpen ? 'bg-emerald-500 pulse-dot' : 'bg-stone-600')} />
                 {center.isOpen ? 'Ouvert' : "Fermé"}
               </span>
-              <ChevronDown className={"w-4 h-4 text-stone-600 transition-transform " + (isExpanded ? 'rotate-180' : '')} />
+              <ChevronDown className={"w-4 h-4 text-stone-600 transition-transform " + (isExpanded ? 'rotate-180' : '')} aria-hidden="true" />
             </div>
           </div>
           <div className="flex flex-wrap gap-2 mt-3">
@@ -298,7 +298,7 @@ function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; i
             ))}
             {center.appointmentRequired && (
               <span className="text-[11px] font-medium bg-amber-50 text-amber-700 px-2 py-0.5 rounded-md flex items-center gap-1">
-                <CalendarCheck className="w-3 h-3" /> Sur rendez-vous
+                <CalendarCheck className="w-3 h-3" aria-hidden="true" /> Sur rendez-vous
               </span>
             )}
           </div>
@@ -311,7 +311,7 @@ function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; i
               <div className="pt-5 grid sm:grid-cols-2 gap-5">
                 <div>
                   <div className="flex items-center gap-2 mb-3">
-                    <Clock className="w-4 h-4 text-crimson" />
+                    <Clock className="w-4 h-4 text-crimson" aria-hidden="true" />
                     <span className="text-sm font-semibold text-stone-800">Horaires d&apos;ouverture</span>
                   </div>
                   <div className="space-y-1.5">
@@ -326,18 +326,18 @@ function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; i
                 <div className="space-y-4">
                   <div>
                     <div className="flex items-center gap-2 mb-3">
-                      <Droplets className="w-4 h-4 text-crimson" />
+                      <Droplets className="w-4 h-4 text-crimson" aria-hidden="true" />
                       <span className="text-sm font-semibold text-stone-800">Informations</span>
                     </div>
                     <p className="text-sm text-stone-700 mb-1">{center.nature}</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <Phone className="w-4 h-4 text-stone-600" />
+                      <Phone className="w-4 h-4 text-stone-600" aria-hidden="true" />
                       <a href={"tel:" + center.phone.replace(/\s/g, '')} className="text-sm text-crimson hover:underline">{center.phone}</a>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4 text-stone-600" />
+                      <Mail className="w-4 h-4 text-stone-600" aria-hidden="true" />
                       <a href={"mailto:" + center.email} className="text-sm text-crimson hover:underline">{center.email}</a>
                     </div>
                   </div>

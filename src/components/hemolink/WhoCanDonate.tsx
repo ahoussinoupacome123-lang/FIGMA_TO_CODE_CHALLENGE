@@ -129,7 +129,7 @@ export default function WhoCanDonate() {
             ))}
           </div>
           <p className="text-xs text-stone-700 mt-4">
-            <XCircle className="w-3.5 h-3.5 inline mr-1" />
+            <XCircle className="w-3.5 h-3.5 inline mr-1" aria-hidden="true" />
             Seul un entretien médical professionnel peut confirmer votre aptitude au don.
             En cas de doute, présentez-vous au centre : le médecin tranchera.
           </p>

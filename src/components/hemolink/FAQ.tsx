@@ -139,7 +139,7 @@ export default function FAQ() {
                   >
                     <HelpCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 transition-colors ${
                       isOpen ? 'text-crimson' : 'text-stone-600'
-                    }`} />
+                    }`} aria-hidden="true" />
                     <span className={`flex-1 text-sm sm:text-[15px] font-medium leading-snug transition-colors ${
                       isOpen ? 'text-crimson' : 'text-stone-800'
                     }`}>
@@ -149,6 +149,7 @@ export default function FAQ() {
                       className={`w-4 h-4 text-stone-600 flex-shrink-0 mt-1 transition-transform duration-200 ${
                         isOpen ? 'rotate-180' : ''
                       }`}
+                      aria-hidden="true"
                     />
                   </button>
                   <AnimatePresence>

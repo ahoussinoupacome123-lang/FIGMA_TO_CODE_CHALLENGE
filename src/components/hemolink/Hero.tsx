@@ -6,53 +6,17 @@ import { Droplets, ShieldCheck, UserMinus, RefreshCw } from 'lucide-react';
 export default function Hero() {
   return (
     <section className="relative min-h-screen sm:min-h-screen flex items-center overflow-hidden pt-16 sm:pt-0">
-      {/* Animated SVG flow lines */}
-      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1440 800" preserveAspectRatio="none">
-          <motion.path
-            d="M0 400 C360 200 720 600 1440 400"
-            fill="none" stroke="white" strokeWidth="1"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: [0, 0.5, 0.3] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
-          />
-          <motion.path
-            d="M0 300 C480 100 960 500 1440 350"
-            fill="none" stroke="white" strokeWidth="0.5"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: [0, 0.4, 0.2] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'linear', delay: 1 }}
-          />
-          <motion.path
-            d="M0 500 C400 350 800 650 1440 450"
-            fill="none" stroke="white" strokeWidth="0.5"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ pathLength: 1, opacity: [0, 0.3, 0.15] }}
-            transition={{ duration: 7, repeat: Infinity, ease: 'linear', delay: 2 }}
-          />
-        </svg>
-      </div>
-
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-hero" />
-      
-      {/* Decorative elements */}
+
+      {/* Decorative background circles */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <motion.div
-          className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-white/5"
-          animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute top-1/3 -left-32 w-72 h-72 rounded-full bg-white/5"
-          animate={{ scale: [1, 1.15, 1], rotate: [0, -5, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        {/* Small floating blood drops */}
-        <svg className="absolute top-24 right-16 w-8 h-8 text-white/10 float-animation" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-white/5 float-animation" />
+        <div className="absolute top-1/3 -left-32 w-72 h-72 rounded-full bg-white/5 blood-drop-path" />
+        <svg className="absolute top-24 right-16 w-8 h-8 text-white/10 float-animation" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C12 2 5 10 5 15a7 7 0 0014 0c0-5-7-13-7-13z" />
         </svg>
-        <svg className="absolute bottom-32 left-20 w-6 h-6 text-white/10 blood-drop-path" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <svg className="absolute bottom-32 left-20 w-6 h-6 text-white/10 blood-drop-path" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 2C12 2 5 10 5 15a7 7 0 0014 0c0-5-7-13-7-13z" />
         </svg>
       </div>

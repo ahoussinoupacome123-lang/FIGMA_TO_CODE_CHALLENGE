@@ -139,7 +139,7 @@ export default function DonationProcess() {
                 <div className={`${i % 2 === 1 ? 'lg:order-2 lg:text-left' : 'lg:text-right'} mb-6 lg:mb-0`}>
                   <div className={`inline-flex items-center gap-3 mb-4 ${i % 2 === 1 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
                     <div className="w-11 h-11 rounded-xl gradient-crimson text-white flex items-center justify-center shadow-md shadow-red-900/10">
-                      <step.icon className="w-5 h-5" />
+                      <step.icon className="w-5 h-5" aria-hidden="true" />
                     </div>
                     <div>
                       <span className="text-xs font-mono text-stone-700">ÉTAPE {step.num}</span>
@@ -184,14 +184,14 @@ export default function DonationProcess() {
             >
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-10 h-10 rounded-xl bg-red-50 text-crimson flex items-center justify-center">
-                  <section.icon className="w-5 h-5" />
+                  <section.icon className="w-5 h-5" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-bold text-stone-900">{section.category}</h3>
               </div>
               <ul className="space-y-3">
                 {section.items.map((item) => (
                   <li key={item.text} className="flex items-start gap-3">
-                    <item.icon className="w-4.5 h-4.5 text-stone-600 mt-0.5 flex-shrink-0" />
+                    <item.icon className="w-4.5 h-4.5 text-stone-600 mt-0.5 flex-shrink-0" aria-hidden="true" />
                     <span className="text-sm text-stone-700 leading-relaxed">{item.text}</span>
                   </li>
                 ))}
