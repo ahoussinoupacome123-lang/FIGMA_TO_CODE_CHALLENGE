@@ -8,16 +8,6 @@ import CenterDirectory from '@/components/hemolink/CenterDirectory';
 import BloodReserves from '@/components/hemolink/BloodReserves';
 import FAQ from '@/components/hemolink/FAQ';
 import Footer from '@/components/hemolink/Footer';
-import SectionTabs from '@/components/hemolink/SectionTabs';
-
-const tabs = [
-  { id: 'pourquoi', label: 'Pourquoi ?' },
-  { id: 'eligibilite', label: 'Qui peut donner ?' },
-  { id: 'test', label: "Test d'éligibilité" },
-  { id: 'deroulement', label: 'Le don' },
-  { id: 'reserves', label: 'Réserves' },
-  { id: 'faq', label: 'FAQ' },
-];
 
 export default function Home() {
   return (
@@ -25,14 +15,12 @@ export default function Home() {
       <Navigation />
       <main id="main-content" className='flex-1' tabIndex={-1}>
         <Hero />
-        <SectionTabs tabs={tabs}>
-          <WhyDonate />
-          <WhoCanDonate />
-          <EligibilityTest />
-          <DonationProcess />
-          <BloodReserves />
-          <FAQ />
-        </SectionTabs>
+        <WhyDonate />
+        <WhoCanDonate />
+        <EligibilityTest />
+        <DonationProcess />
+        <BloodReserves />
+        <FAQ />
         <CenterDirectory />
       </main>
       <Footer />

@@ -85,26 +85,6 @@ export const centers: Center[] = [
   },
   {
     id: 4,
-    name: "Hôpital Saint Luc de Cotonou - Banque de Sang",
-    nature: "Unité hospitalière",
-    address: "Rue des Roches, Cotonou",
-    city: "Cotonou",
-    postalCode: "01 BP",
-    lat: 6.3562,
-    lng: 2.4183,
-    phone: "+229 21 30 14 22",
-    email: "bds-saintluc@sante.bj",
-    hours: [
-      { jours: "Lundi - Vendredi", horaires: "08h00 - 16h00" },
-      { jours: "Samedi", horaires: "08h00 - 13h00" },
-      { jours: "Dimanche", horaires: "Fermé" },
-    ],
-    isOpen: false,
-    donationTypes: ["sang_total", "plasma"],
-    appointmentRequired: false,
-  },
-  {
-    id: 5,
     name: "Centre Hospitalier Départemental de l'Atlantique",
     nature: "Hôpital régional",
     address: "Zone administrative, Abomey-Calavi",
@@ -124,7 +104,7 @@ export const centers: Center[] = [
     appointmentRequired: false,
   },
   {
-    id: 6,
+    id: 5,
     name: "Hôpital de Zone de Djougou",
     nature: "Unité hospitalière",
     address: "Avenue de l'Indépendance, Djougou",
@@ -144,7 +124,7 @@ export const centers: Center[] = [
     appointmentRequired: false,
   },
   {
-    id: 7,
+    id: 6,
     name: "Centre de Transfusion Sanguine de Ouidah",
     nature: "CNTS - Antenne régionale",
     address: "Avenue de la République, Ouidah",
@@ -164,7 +144,7 @@ export const centers: Center[] = [
     appointmentRequired: false,
   },
   {
-    id: 8,
+    id: 7,
     name: "Centre Hospitalier Régional de Kandi",
     nature: "Hôpital régional",
     address: "Avenue de l'Indépendance, Kandi",
@@ -184,7 +164,7 @@ export const centers: Center[] = [
     appointmentRequired: false,
   },
   {
-    id: 9,
+    id: 8,
     name: "Hôpital de Zone de Lokossa",
     nature: "Unité hospitalière",
     address: "Route de Grand-Popo, Lokossa",
@@ -204,7 +184,7 @@ export const centers: Center[] = [
     appointmentRequired: false,
   },
   {
-    id: 10,
+    id: 9,
     name: "Centre Hospitalier Départemental du Zou",
     nature: "Hôpital régional",
     address: "Zone hospitlalière, Bohicon",
@@ -224,7 +204,7 @@ export const centers: Center[] = [
     appointmentRequired: false,
   },
   {
-    id: 11,
+    id: 10,
     name: "Hôpital de Zone de Natitingou",
     nature: "Unité hospitalière",
     address: "Avenue de la République, Natitingou",

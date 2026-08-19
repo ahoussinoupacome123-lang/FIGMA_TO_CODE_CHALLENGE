@@ -81,7 +81,7 @@ export default function Navigation() {
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
-  // Handle nav link clicks — push hash and scroll to top of content
+  // Handle nav link clicks — smooth scroll to section
   useEffect(() => {
     const clickHandler = (ev: MouseEvent) => {
       const anchor = (ev.target as HTMLElement)?.closest?.('a') as HTMLAnchorElement | null;
@@ -95,21 +95,16 @@ export default function Navigation() {
       if (window.history) {
         window.history.pushState(null, '', `#${fragment}`);
       }
-      window.dispatchEvent(new Event('hashchange'));
       setActiveSection(fragment);
 
-      // Smooth scroll to the content panel (or section if outside tabs)
-      requestAnimationFrame(() => {
-        const panel = document.getElementById(`panel-${fragment}`);
-        const target = panel || document.getElementById(fragment);
-        if (target) {
+      const target = document.getElementById(fragment);
+      if (target) {
+        requestAnimationFrame(() => {
           const headerH = document.querySelector('header')?.clientHeight || 64;
-          const tabsEl = panel?.previousElementSibling as HTMLElement | null;
-          const tabsH = tabsEl?.clientHeight || 0;
-          const y = window.scrollY + target.getBoundingClientRect().top - headerH - tabsH - 8;
+          const y = window.scrollY + target.getBoundingClientRect().top - headerH - 8;
           window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
-        }
-      });
+        });
+      }
     };
 
     document.addEventListener('click', clickHandler);
