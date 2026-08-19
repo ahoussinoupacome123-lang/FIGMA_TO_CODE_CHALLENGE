@@ -1,5 +1,3 @@
-'use client';
-
 import { Droplets, Heart, ArrowRight, ExternalLink, Facebook, Twitter, Phone } from 'lucide-react';
 
 const footerLinks = [
@@ -129,7 +127,7 @@ export default function Footer() {
           </div>
 
           {/* Medical disclaimer */}
-          <div className="bg-white/5 rounded-2xl border border-white/5 p-5 mb-10">
+          <div className="bg-white/5 rounded-2xl border border-white/5 p-5 mb-10" role="note" aria-label="Avertissement médical">
             <p className="text-xs text-white/80 leading-relaxed">
               <strong className="text-white/80">Avertissement médical :</strong> Les informations présentées sur HemoLink sont fournies à titre indicatif et ne sauraient se substituer à un avis médical professionnel. Seul un médecin habilité peut confirmer votre aptitude au don de sang après un entretien clinique.
             </p>

@@ -49,10 +49,10 @@ export default function Hero() {
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         {/* Small floating blood drops */}
-        <svg className="absolute top-24 right-16 w-8 h-8 text-white/10 float-animation" viewBox="0 0 24 24" fill="currentColor">
+        <svg className="absolute top-24 right-16 w-8 h-8 text-white/10 float-animation" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2C12 2 5 10 5 15a7 7 0 0014 0c0-5-7-13-7-13z" />
         </svg>
-        <svg className="absolute bottom-32 left-20 w-6 h-6 text-white/10 blood-drop-path" viewBox="0 0 24 24" fill="currentColor">
+        <svg className="absolute bottom-32 left-20 w-6 h-6 text-white/10 blood-drop-path" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2C12 2 5 10 5 15a7 7 0 0014 0c0-5-7-13-7-13z" />
         </svg>
       </div>
@@ -107,7 +107,7 @@ export default function Hero() {
                 className="group inline-flex items-center justify-center gap-2 bg-coral hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl text-lg transition-all shadow-xl"
               >
                 Vérifier mon éligibilité
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </a>
@@ -120,23 +120,23 @@ export default function Hero() {
             </motion.div>
 
             {/* Trust badges */}
-            <motion.div
+            <motion.ul
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-8 flex flex-wrap gap-4 sm:gap-6"
+              className="mt-8 flex flex-wrap gap-4 sm:gap-6 list-none p-0 m-0"
             >
               {[
                 { icon: ShieldCheck, label: 'Informations certifiées' },
                 { icon: UserMinus, label: 'Sans inscription' },
                 { icon: RefreshCw, label: 'Mis à jour en temps réel' },
               ].map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-2 text-white/70 text-sm">
+                <li key={label} className="flex items-center gap-2 text-white/70 text-sm">
                   <Icon className="w-4 h-4 text-orange-300" />
                   <span>{label}</span>
-                </div>
+                </li>
               ))}
-            </motion.div>
+            </motion.ul>
           </div>
 
           {/* Right: Animated blood drop */}
@@ -192,24 +192,24 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-20"
         >
-          <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-stone-900 text-center border border-red-50">
+          <dl className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-stone-900 text-center border border-red-50">
             <div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">1 Don</div>
-                <div className="text-stone-700 text-xs sm:text-sm">= 3 vies sauvées</div>
+              <dt className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">1 Don</dt>
+                <dd className="text-stone-700 text-xs sm:text-sm">= 3 vies sauvées</dd>
             </div>
             <div className="border-l border-stone-100 pl-4 sm:pl-0">
-              <div className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">450ml</div>
-              <div className="text-stone-700 text-xs sm:text-sm">Volume d'un don</div>
+              <dt className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">450ml</dt>
+              <dd className="text-stone-700 text-xs sm:text-sm">Volume d'un don</dd>
             </div>
             <div className="border-l border-stone-100 pl-4 sm:pl-0">
-              <div className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">24/7</div>
-              <div className="text-stone-700 text-xs sm:text-sm">Disponibilité centres</div>
+              <dt className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">24/7</dt>
+              <dd className="text-stone-700 text-xs sm:text-sm">Disponibilité centres</dd>
             </div>
             <div className="border-l border-stone-100 pl-4 sm:pl-0">
-              <div className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">15 Min</div>
-              <div className="text-stone-700 text-xs sm:text-sm">Temps moyen du don</div>
+              <dt className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">15 Min</dt>
+              <dd className="text-stone-700 text-xs sm:text-sm">Temps moyen du don</dd>
             </div>
-          </div>
+          </dl>
         </motion.div>
       </div>
 

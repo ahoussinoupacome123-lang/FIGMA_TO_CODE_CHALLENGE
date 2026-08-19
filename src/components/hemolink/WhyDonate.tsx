@@ -42,14 +42,16 @@ function AnimatedCounter({ value, unit, icon: Icon, label }: (typeof stats)[0]) 
       transition={{ duration: 0.5 }}
       className="text-center"
     >
-      <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-red-50 text-crimson mb-3">
-        <Icon className="w-6 h-6" />
-      </div>
-      <div className="text-3xl sm:text-4xl font-bold text-stone-900">
-        {value}
-        {unit && <span className="text-base font-medium text-crimson ml-1">{unit}</span>}
-      </div>
-      <p className="text-sm text-stone-700 mt-1">{label}</p>
+      <dl>
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-red-50 text-crimson mb-3">
+          <Icon className="w-6 h-6" />
+        </div>
+        <dt className="text-3xl sm:text-4xl font-bold text-stone-900">
+          {value}
+          {unit && <span className="text-base font-medium text-crimson ml-1">{unit}</span>}
+        </dt>
+        <dd className="text-sm text-stone-700 mt-1">{label}</dd>
+      </dl>
     </motion.div>
   );
 }
@@ -59,7 +61,7 @@ export default function WhyDonate() {
   const inView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
-    <section className="py-20 sm:py-28 bg-cream">
+    <section id="pourquoi" className="py-20 sm:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div ref={sectionRef} className="text-center max-w-2xl mx-auto mb-16">

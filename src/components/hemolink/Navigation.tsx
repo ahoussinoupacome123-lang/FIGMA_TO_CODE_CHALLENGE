@@ -31,6 +31,11 @@ export default function Navigation() {
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = 'hidden';
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setMobileOpen(false);
+      };
+      document.addEventListener('keydown', handleEscape);
+      return () => { document.body.style.overflow = ''; document.removeEventListener('keydown', handleEscape); };
     } else {
       document.body.style.overflow = '';
     }
@@ -157,6 +162,9 @@ export default function Navigation() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 lg:hidden"
+            role="dialog"
+            aria-label="Menu de navigation mobile"
+            aria-modal="true"
           >
             <div className="absolute inset-0 bg-black/30" onClick={() => setMobileOpen(false)} />
             <div className="absolute top-0 right-0 w-80 max-w-[85vw] h-full bg-white shadow-2xl">

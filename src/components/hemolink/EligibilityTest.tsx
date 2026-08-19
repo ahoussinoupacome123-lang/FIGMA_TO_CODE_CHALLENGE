@@ -88,7 +88,7 @@ export default function EligibilityTest() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <section className="py-20 sm:py-28 gradient-crimson-soft">
+    <section id="test" className="py-20 sm:py-28 gradient-crimson-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center max-w-2xl mx-auto mb-12">
           <motion.span
@@ -125,17 +125,20 @@ export default function EligibilityTest() {
             transition={{ delay: 0.3 }}
             onSubmit={handleSubmit}
             className="bg-white rounded-2xl shadow-lg shadow-red-900/5 p-6 sm:p-8 border border-red-100/50"
+            aria-label="Formulaire de test d'éligibilité au don de sang"
           >
             {/* Gender */}
             <div className="mb-6">
-              <label className="block text-sm font-semibold text-stone-800 mb-3">
+              <label id="gender-label" className="block text-sm font-semibold text-stone-800 mb-3">
                 Genre
               </label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-3" role="radiogroup" aria-labelledby="gender-label">
                 {['homme', 'femme'].map((g) => (
                   <button
                     key={g}
                     type="button"
+                    role="radio"
+                    aria-checked={gender === g}
                     onClick={() => { setGender(g as 'homme' | 'femme'); setErrors((prev) => ({ ...prev, gender: '' })); }}
                     className={`py-3 px-4 rounded-xl border-2 text-sm font-medium transition-all ${
                       gender === g
@@ -241,8 +244,9 @@ export default function EligibilityTest() {
                 onChange={(e) => setLastDonation(e.target.value)}
                 max={new Date().toISOString().split('T')[0]}
                 className="w-full px-4 py-3 rounded-xl border-2 border-stone-200 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:outline-none focus:border-crimson"
+                aria-describedby="lastDonation-hint"
               />
-              <p className="text-xs text-stone-700 mt-1.5 flex items-center gap-1">
+              <p id="lastDonation-hint" className="text-xs text-stone-700 mt-1.5 flex items-center gap-1">
                 <HelpCircle className="w-3.5 h-3.5" /> Laissez vide si vous n'avez jamais donné.
               </p>
             </div>

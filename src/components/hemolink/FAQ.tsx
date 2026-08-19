@@ -17,7 +17,7 @@ export default function FAQ() {
       : faqItems.filter((item) => item.category === activeCategory);
 
   return (
-    <section className='py-20 sm:py-28 gradient-crimson-soft'>
+    <section id='faq' className='py-20 sm:py-28 gradient-crimson-soft'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div ref={ref} className='text-center max-w-2xl mx-auto mb-12'>
           <motion.span
@@ -48,9 +48,11 @@ export default function FAQ() {
         </div>
 
         {/* Category filter */}
-        <div className='flex flex-wrap items-center justify-center gap-2 mb-10'>
+        <div className='flex flex-wrap items-center justify-center gap-2 mb-10' role='radiogroup' aria-label='Catégories de FAQ'>
           <button
             onClick={() => { setActiveCategory('all'); setOpenIndex(null); }}
+            role='radio'
+            aria-checked={activeCategory === 'all'}
             className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
               activeCategory === 'all'
                 ? 'bg-crimson text-white shadow-sm'
@@ -63,6 +65,8 @@ export default function FAQ() {
             <button
               key={cat.id}
               onClick={() => { setActiveCategory(cat.id); setOpenIndex(null); }}
+              role='radio'
+              aria-checked={activeCategory === cat.id}
               className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
                 activeCategory === cat.id
                   ? 'bg-crimson text-white shadow-sm'

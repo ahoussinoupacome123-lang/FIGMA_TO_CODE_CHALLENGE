@@ -52,6 +52,7 @@ src/
 │   ├── BloodReserves.tsx    # C7 : 8 groupes sanguins, barres verticales animées, alerte critique
 │   ├── FAQ.tsx              # C8 : 12 Q/R, 5 catégories, accordion, filtres
 │   ├── PreparationGuide.tsx # Conseils avant/après le don
+│   ├── SectionTabs.tsx      # Tabbed navigation (role=tablist, arrow keys, aria-selected)
 │   └── Footer.tsx           # Bannière CTA gradient, 4 colonnes, urgence 117, disclaimer médical
 ├── data/
 │   ├── centers.ts           # 10 centres CNTS (Bénin) avec coordonnées GPS, horaires, types de dons
@@ -59,6 +60,8 @@ src/
 │   └── faq.ts               # 12 items typés (5 catégories)
 └── lib/
     ├── eligibility.ts      # Pure function : checkEligibility(input) → { status, reasons, nextDate }
+    ├── geo.tsx              # GeoProvider context: geolocation with Benin fallback
+    ├── toast.tsx            # ToastProvider context: animated notifications (success/error/warning/info)
     └── utils.ts             # cn() helper (clsx + tailwind-merge)
 ```
 
@@ -153,6 +156,29 @@ npm start
 
 Le build génère un output standalone dans `.next/standalone/`. Déployable sur Vercel, Netlify, ou tout serveur Node.js 18+.
 Aucune variable d'environnement requise.
+
+---
+
+## Processus & Usage IA
+
+Ce projet a été construit en collaboration avec un assistant IA (OpenCode / Claude) pour accélérer le développement tout en gardant le contrôle total sur les décisions produit et techniques.
+
+### Prompts utilisés
+
+Le fichier [`PROMPTS.md`](./PROMPTS.md) documente l'intégralité des instructions et itérations utilisées pour construire HemoLink, incluant :
+- Initialisation du projet et choix de stack
+- Structure des sections et brief fonctionnel
+- Références visuelles SuperDesign
+- Règles d'accessibilité et responsive
+- Consignes spécifiques (data Bénin, inputs stricts, validation croisée)
+
+### Bonnes pratiques Git
+
+- **Commits atomiques** : chaque commit a un scope clair (feat, fix, perf, docs, chore, ci)
+- **Messages conventionnels** : format `type(scope): description`
+- **Issues & documentation** : README complet, PROMPTS.md, LICENSE
+- **CI** : configuration GitHub Actions avec tests Playwright + vitest
+- **A11y testing** : axe-core intégré dans les dépendances
 
 ---
 

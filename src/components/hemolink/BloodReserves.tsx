@@ -12,7 +12,7 @@ export default function BloodReserves() {
   const criticalCount = bloodReserves.filter((b) => b.level === 'critique').length;
 
   return (
-    <section className='py-20 sm:py-28 bg-cream'>
+    <section id='reserves' className='py-20 sm:py-28 bg-cream'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div ref={ref} className='text-center max-w-2xl mx-auto mb-12'>
           <motion.span
@@ -48,6 +48,7 @@ export default function BloodReserves() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.3 }}
             className='bg-red-50 border border-red-200/60 rounded-2xl p-4 sm:p-5 mb-10 flex items-start gap-4'
+            role='alert'
           >
             <AlertTriangle className='w-5 h-5 text-crimson flex-shrink-0 mt-0.5' />
             <div>
@@ -104,7 +105,7 @@ function BloodBarCard({ blood, index }: { blood: (typeof bloodReserves)[0]; inde
       className='bg-white p-4 sm:p-6 rounded-3xl text-center shadow-sm hover:shadow-md transition-shadow'
     >
       <div className='text-xl sm:text-2xl font-black text-crimson mb-4'>{blood.group}</div>
-      <div className='h-20 sm:h-24 w-full bg-stone-100 rounded-full relative overflow-hidden flex flex-col justify-end'>
+      <div className='h-20 sm:h-24 w-full bg-stone-100 rounded-full relative overflow-hidden flex flex-col justify-end' role='progressbar' aria-valuenow={blood.percentage} aria-valuemin={0} aria-valuemax={100} aria-label={`Réserve ${blood.group} : ${blood.percentage}%`}>
         <motion.div
           initial={{ height: 0 }}
           whileInView={{ height: `${blood.percentage}%` }}

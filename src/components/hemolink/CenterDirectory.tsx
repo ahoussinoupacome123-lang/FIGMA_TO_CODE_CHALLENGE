@@ -278,7 +278,7 @@ function ViewButton({ active, onClick, label, icon, hidden }: { active: boolean;
 function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; isExpanded: boolean; onToggle: () => void; index: number }) {
   return (
     <motion.div layout initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ delay: index * 0.03 }} className="bg-white rounded-2xl border border-stone-100 overflow-hidden hover:shadow-md transition-shadow">
-      <button onClick={onToggle} className="w-full text-left p-5 sm:p-6 flex items-start gap-4" aria-expanded={isExpanded}>
+      <button onClick={onToggle} className="w-full text-left p-5 sm:p-6 flex items-start gap-4" aria-expanded={isExpanded} aria-controls={`center-details-${center.id}`}>
         <div className={"flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center " + (center.isOpen ? 'bg-emerald-50 text-emerald-600' : 'bg-stone-100 text-stone-600')}>
           <MapPin className="w-5 h-5" />
         </div>
@@ -311,7 +311,7 @@ function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; i
       <AnimatePresence>
         {isExpanded && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
-            <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 border-t border-stone-100">
+            <div id={`center-details-${center.id}`} className="px-5 sm:px-6 pb-5 sm:pb-6 pt-0 border-t border-stone-100">
               <div className="pt-5 grid sm:grid-cols-2 gap-5">
                 <div>
                   <div className="flex items-center gap-2 mb-3">
