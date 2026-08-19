@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { faqItems, faqCategories } from '@/data/faq';
@@ -15,6 +15,32 @@ export default function FAQ() {
     activeCategory === 'all'
       ? faqItems
       : faqItems.filter((item) => item.category === activeCategory);
+
+  const categoryIds = ['all', ...faqCategories.map((c) => c.id)];
+
+  const handleCategoryKeys = useCallback(
+    (e: React.KeyboardEvent, currentIndex: number) => {
+      let next = -1;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        next = (currentIndex + 1) % categoryIds.length;
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        next = (currentIndex - 1 + categoryIds.length) % categoryIds.length;
+      } else if (e.key === 'Home') {
+        next = 0;
+      } else if (e.key === 'End') {
+        next = categoryIds.length - 1;
+      }
+      if (next !== -1) {
+        e.preventDefault();
+        const catId = categoryIds[next];
+        setActiveCategory(catId);
+        setOpenIndex(null);
+        const buttons = (e.currentTarget.parentElement as HTMLElement)?.querySelectorAll('[role="radio"]');
+        (buttons?.[next] as HTMLElement)?.focus();
+      }
+    },
+    [categoryIds]
+  );
 
   return (
     <section id='faq' className='py-20 sm:py-28 gradient-crimson-soft'>
@@ -42,8 +68,8 @@ export default function FAQ() {
             transition={{ delay: 0.2 }}
             className='text-stone-600 text-lg leading-relaxed'
           >
-            On a compilé les questions les plus fréquentes. Si la vôtre n'y est pas,
-            n'hésitez pas à contacter directement un centre de transfusion.
+            On a compilé les questions les plus fréquentes. Si la vôtre n&apos;y est pas,
+            n&apos;hésitez pas à contacter directement un centre de transfusion.
           </motion.p>
         </div>
 
@@ -51,8 +77,10 @@ export default function FAQ() {
         <div className='flex flex-wrap items-center justify-center gap-2 mb-10' role='radiogroup' aria-label='Catégories de FAQ'>
           <button
             onClick={() => { setActiveCategory('all'); setOpenIndex(null); }}
+            onKeyDown={(e) => handleCategoryKeys(e, 0)}
             role='radio'
             aria-checked={activeCategory === 'all'}
+            tabIndex={activeCategory === 'all' ? 0 : -1}
             className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
               activeCategory === 'all'
                 ? 'bg-crimson text-white shadow-sm'
@@ -61,12 +89,14 @@ export default function FAQ() {
           >
             Toutes
           </button>
-          {faqCategories.map((cat) => (
+          {faqCategories.map((cat, i) => (
             <button
               key={cat.id}
               onClick={() => { setActiveCategory(cat.id); setOpenIndex(null); }}
+              onKeyDown={(e) => handleCategoryKeys(e, i + 1)}
               role='radio'
               aria-checked={activeCategory === cat.id}
+              tabIndex={activeCategory === cat.id ? 0 : -1}
               className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
                 activeCategory === cat.id
                   ? 'bg-crimson text-white shadow-sm'
@@ -80,6 +110,12 @@ export default function FAQ() {
 
         {/* FAQ Accordion */}
         <div className='max-w-3xl mx-auto space-y-3'>
+          {filtered.length === 0 && (
+            <div className='text-center py-12'>
+              <HelpCircle className='w-10 h-10 text-stone-300 mx-auto mb-3' />
+              <p className='text-sm text-stone-700'>Aucune question dans cette catégorie.</p>
+            </div>
+          )}
           <AnimatePresence mode='popLayout'>
             {filtered.map((item, i) => {
               const isOpen = openIndex === i;

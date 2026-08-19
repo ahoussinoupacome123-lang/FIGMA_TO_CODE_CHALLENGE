@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Droplets } from 'lucide-react';
 
@@ -19,6 +19,8 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,12 +37,41 @@ export default function Navigation() {
         if (e.key === 'Escape') setMobileOpen(false);
       };
       document.addEventListener('keydown', handleEscape);
+      // Focus first nav link after open
+      requestAnimationFrame(() => {
+        const panel = menuPanelRef.current;
+        if (panel) {
+          const firstLink = panel.querySelector('a') as HTMLElement | null;
+          firstLink?.focus();
+        }
+      });
       return () => { document.body.style.overflow = ''; document.removeEventListener('keydown', handleEscape); };
     } else {
       document.body.style.overflow = '';
     }
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
+
+  const handleMenuKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key !== 'Tab') return;
+    const panel = menuPanelRef.current;
+    if (!panel) return;
+    const focusables = panel.querySelectorAll<HTMLElement>('a[href], button');
+    if (focusables.length === 0) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }, []);
 
   // Listen for hash changes to update active state
   useEffect(() => {
@@ -140,6 +171,7 @@ export default function Navigation() {
 
             {/* Mobile toggle */}
             <button
+              ref={hamburgerRef}
               className={`lg:hidden p-2 rounded-lg transition-colors ${
                 scrolled ? 'text-stone-700 hover:bg-stone-100' : 'text-white hover:bg-white/10'
               }`}
@@ -165,9 +197,10 @@ export default function Navigation() {
             role="dialog"
             aria-label="Menu de navigation mobile"
             aria-modal="true"
+            onKeyDown={handleMenuKeyDown}
           >
             <div className="absolute inset-0 bg-black/30" onClick={() => setMobileOpen(false)} />
-            <div className="absolute top-0 right-0 w-80 max-w-[85vw] h-full bg-white shadow-2xl">
+            <div ref={menuPanelRef} className="absolute top-0 right-0 w-80 max-w-[85vw] h-full bg-white shadow-2xl">
               <div className="pt-20 px-6 pb-8">
                 <div className="flex items-center gap-2 mb-8">
                   <Droplets className="w-5 h-5 text-crimson" />
