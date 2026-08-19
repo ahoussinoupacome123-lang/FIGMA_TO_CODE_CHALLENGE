@@ -4,10 +4,12 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { CheckCircle2, XCircle, CalendarClock, HelpCircle, Droplets, AlertTriangle } from 'lucide-react';
 import { checkEligibility, type EligibilityResult } from '@/lib/eligibility';
+import { useToast } from '@/lib/toast';
 
 export default function EligibilityTest() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+  const toast = useToast();
 
   const [age, setAge] = useState<string>('');
   const [birthYear, setBirthYear] = useState<string>('');
@@ -55,7 +57,10 @@ export default function EligibilityTest() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setResult(null);
-    if (!validate()) return;
+    if (!validate()) {
+      toast('Veuillez corriger les erreurs du formulaire.', 'error');
+      return;
+    }
 
     const res = checkEligibility({
       age: parseInt(age),

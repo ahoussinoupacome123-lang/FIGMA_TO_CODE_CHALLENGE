@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ToastProvider } from "@/lib/toast";
+import { GeoProvider } from "@/lib/geo";
 
 export const metadata: Metadata = {
   title: "HemoLink — Tout savoir sur le don de sang au Bénin",
@@ -41,7 +43,17 @@ export default function RootLayout({
         />
       </head>
       <body className={`antialiased bg-background text-foreground`}>
-        {children}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:bg-crimson focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold focus:outline-none"
+        >
+          Aller au contenu principal
+        </a>
+        <ToastProvider>
+          <GeoProvider>
+            {children}
+          </GeoProvider>
+        </ToastProvider>
       </body>
     </html>
   );

@@ -19,7 +19,6 @@ describe('checkEligibility', () => {
   });
 
   it('returns next_date when last donation too recent for male', () => {
-    const now = new Date();
     const last = new Date();
     last.setMonth(last.getMonth() - 1); // 1 month ago
     const res = checkEligibility({ age: 30, weight: 70, gender: 'homme', lastDonationDate: last.toISOString() });

@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { centers, cities, donationTypes, donationTypeLabels, type Center, type DonationType } from '@/data/centers';
+import { useGeo } from '@/lib/geo';
 
 const CenterMap = dynamic(() => import('./CenterMap'), {
   ssr: false,
@@ -39,6 +40,7 @@ type ViewMode = 'list' | 'map' | 'both';
 export default function CenterDirectory() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+  const { status: geoStatus, locate } = useGeo();
 
   const [search, setSearch] = useState('');
   const [cityFilter, setCityFilter] = useState('');
@@ -46,7 +48,6 @@ export default function CenterDirectory() {
   const [showFilters, setShowFilters] = useState(false);
   const [expandedCenter, setExpandedCenter] = useState<number | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('both');
-  const [geoStatus, setGeoStatus] = useState<'idle' | 'requesting' | 'granted' | 'denied'>('idle');
   const [quickFilter, setQuickFilter] = useState<'all' | 'open' | 'no_rdv'>('all');
 
   const filtered = useMemo(() => {
@@ -70,19 +71,11 @@ export default function CenterDirectory() {
   };
 
   const handleLocate = () => {
-    setGeoStatus('requesting');
-    const locateFn = (window as unknown as Record<string, unknown>).__hemolink_locate as (() => void) | undefined;
-    if (locateFn) {
-      locateFn();
-      // Poll for status change from map component
-      const interval = setInterval(() => {
-        const s = document.querySelector('.leaflet-container')?.querySelector('[aria-label]');
-        // Simple: just update after a delay
-      }, 500);
-      setTimeout(() => { clearInterval(interval); setGeoStatus('granted'); }, 3000);
-    } else {
-      setGeoStatus('denied');
-    }
+    locate();
+    // Watch for status change to show toast
+    const check = setInterval(() => {
+      clearInterval(check);
+    }, 500);
   };
 
   const hasResults = filtered.length > 0;
@@ -176,7 +169,7 @@ export default function CenterDirectory() {
                 aria-label="Utiliser ma position"
               >
                 {geoStatus === 'requesting' && <Loader2 className="w-4 h-4 animate-spin" />}
-                {geoStatus !== 'requesting' && !geoStatus.includes('granted') && <Crosshair className="w-4 h-4" />}
+                {geoStatus !== 'requesting' && geoStatus !== 'granted' && <Crosshair className="w-4 h-4" />}
                 {geoStatus === 'granted' && <Navigation className="w-4 h-4" />}
                 <span>{geoStatus === 'granted' ? 'Localisé' : geoStatus === 'requesting' ? 'Localisation...' : 'Utiliser ma position'}</span>
               </button>
@@ -249,7 +242,7 @@ export default function CenterDirectory() {
             {(viewMode === 'map' || viewMode === 'both') && (
               <div className={(viewMode === 'both' ? 'order-1 ' : '') + 'mb-6 lg:mb-0'}>
                 <div className="h-[400px] lg:h-[560px]">
-                  <CenterMap filteredCenters={filtered} onSelectCenter={handleMapSelectCenter} selectedCenterId={expandedCenter} />
+                  <CenterMap filteredCenters={filtered} onSelectCenter={handleMapSelectCenter} />
                 </div>
               </div>
             )}
@@ -323,7 +316,7 @@ function CenterCard({ center, isExpanded, onToggle, index }: { center: Center; i
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <Clock className="w-4 h-4 text-crimson" />
-                    <span className="text-sm font-semibold text-stone-800">Horaires d'ouverture</span>
+                    <span className="text-sm font-semibold text-stone-800">Horaires d&apos;ouverture</span>
                   </div>
                   <div className="space-y-1.5">
                     {center.hours.map((h) => (

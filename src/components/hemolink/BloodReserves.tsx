@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { AlertTriangle, Droplets } from 'lucide-react';
-import { bloodReserves, getLevelColor, getLevelLabel, getLevelDescription } from '@/data/blood-reserves';
+import { bloodReserves, getLevelColor, getLevelLabel } from '@/data/blood-reserves';
 
 export default function BloodReserves() {
   const ref = useRef(null);

@@ -244,6 +244,22 @@
   border-radius: 4px;
 }
 
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .heartbeat,
+  .float-animation,
+  .blood-drop-path,
+  .pulse-dot {
+    animation: none !important;
+  }
+}
+
 /* Leaflet map overrides */
 .leaflet-container {
   font-family: inherit;

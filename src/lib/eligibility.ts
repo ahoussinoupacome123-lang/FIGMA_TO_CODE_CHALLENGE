@@ -14,9 +14,6 @@ export interface EligibilityResult {
 }
 
 export function checkEligibility(input: EligibilityInput): EligibilityResult {
-  const reasons: string[] = [];
-  let nextEligibleDate: string | null = null;
-
   // Age check
   if (input.age === null) {
     return { status: 'not_eligible', reasons: ['Veuillez entrer votre âge.'], nextEligibleDate: null };
