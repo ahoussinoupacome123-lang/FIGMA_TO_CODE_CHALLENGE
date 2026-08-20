@@ -43,7 +43,7 @@ export default function FAQ() {
   );
 
   return (
-    <section id='faq' className='py-20 sm:py-28 gradient-crimson-soft'>
+    <section id='faq' className='py-14 sm:py-20 lg:py-28 gradient-crimson-soft'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div ref={ref} className='text-center max-w-2xl mx-auto mb-16'>
           <motion.span
@@ -81,7 +81,7 @@ export default function FAQ() {
             role='radio'
             aria-checked={activeCategory === 'all'}
             tabIndex={activeCategory === 'all' ? 0 : -1}
-            className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
+            className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
               activeCategory === 'all'
                 ? 'bg-crimson text-white shadow-sm'
                 : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200'
@@ -97,7 +97,7 @@ export default function FAQ() {
               role='radio'
               aria-checked={activeCategory === cat.id}
               tabIndex={activeCategory === cat.id ? 0 : -1}
-              className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
+              className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
                 activeCategory === cat.id
                   ? 'bg-crimson text-white shadow-sm'
                   : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200'
@@ -140,7 +140,7 @@ export default function FAQ() {
                     <HelpCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 transition-colors ${
                       isOpen ? 'text-crimson' : 'text-stone-600'
                     }`} aria-hidden="true" />
-                    <span className={`flex-1 text-sm sm:text-[15px] font-medium leading-snug transition-colors ${
+                    <span className={`flex-1 text-[15px] sm:text-base font-medium leading-snug transition-colors ${
                       isOpen ? 'text-crimson' : 'text-stone-800'
                     }`}>
                       {item.question}

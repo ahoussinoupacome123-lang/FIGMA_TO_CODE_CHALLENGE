@@ -103,9 +103,9 @@ export default function Hero() {
             </motion.ul>
           </div>
 
-          {/* Right: Animated blood drop */}
-          <div className="hidden lg:flex justify-center relative">
-            <div className="relative">
+          {/* Right: Animated blood drop — desktop full, mobile compact */}
+          <div className="flex justify-center relative">
+            <div className="relative lg:block hidden">
               {/* Pulsing glow behind the drop */}
               <motion.div
                 className="absolute -inset-16 bg-orange-400/20 rounded-full blur-3xl"
@@ -147,6 +147,22 @@ export default function Hero() {
                 <Droplets className="w-6 h-6 text-white/30" strokeWidth={1.5} aria-hidden="true" />
               </motion.div>
             </div>
+            {/* Mobile compact illustration */}
+            <motion.div
+              className="lg:hidden relative flex items-center justify-center my-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <div className="absolute w-24 h-24 bg-orange-400/15 rounded-full blur-2xl" aria-hidden="true" />
+              <div className="absolute w-16 h-16 bg-red-400/10 rounded-full blur-xl" aria-hidden="true" />
+              <Droplets
+                className="text-[80px] text-white/80 heartbeat relative z-10"
+                strokeWidth={0.5}
+                aria-hidden="true"
+                style={{ filter: 'drop-shadow(0 0 20px rgba(249, 115, 22, 0.25))' }}
+              />
+            </motion.div>
           </div>
         </div>
 

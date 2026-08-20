@@ -47,7 +47,7 @@ export default function CenterDirectory() {
   const [typeFilter, setTypeFilter] = useState<DonationType | ''>('');
   const [showFilters, setShowFilters] = useState(false);
   const [expandedCenter, setExpandedCenter] = useState<number | null>(null);
-  const [viewMode, setViewMode] = useState<ViewMode>('both');
+  const [viewMode, setViewMode] = useState<ViewMode>(() => typeof window !== 'undefined' && window.innerWidth < 640 ? 'list' : 'both');
   const [quickFilter, setQuickFilter] = useState<'all' | 'open' | 'no_rdv'>('all');
 
   const filtered = useMemo(() => {
@@ -77,7 +77,7 @@ export default function CenterDirectory() {
   const hasResults = filtered.length > 0;
 
   return (
-    <section id="centres" className="py-20 sm:py-28 bg-cream">
+    <section id="centres" className="py-14 sm:py-20 lg:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div ref={ref} className="text-center max-w-2xl mx-auto mb-16">

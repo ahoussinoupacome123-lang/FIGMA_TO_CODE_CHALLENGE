@@ -88,7 +88,7 @@ export default function EligibilityTest() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <section id="test" className="py-20 sm:py-28 gradient-crimson-soft">
+    <section id="test" className="py-14 sm:py-20 lg:py-28 gradient-crimson-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center max-w-2xl mx-auto mb-16">
           <motion.span
@@ -269,7 +269,7 @@ export default function EligibilityTest() {
 
             <button
               type="submit"
-              className="w-full gradient-crimson text-white font-semibold py-3.5 px-6 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all text-sm shadow-md shadow-red-900/10 flex items-center justify-center gap-2"
+              className="w-full gradient-crimson text-white font-semibold py-4 px-6 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all text-base shadow-md shadow-red-900/10 flex items-center justify-center gap-2"
             >
               <Droplets className="w-4 h-4" />
               Vérifier mon éligibilité

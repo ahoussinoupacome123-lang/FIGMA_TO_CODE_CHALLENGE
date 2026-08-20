@@ -91,7 +91,7 @@ export default function DonationProcess() {
   const inView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="deroulement" className="py-20 sm:py-28 bg-white">
+    <section id="deroulement" className="py-14 sm:py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center max-w-2xl mx-auto mb-16">
           <motion.span
@@ -120,11 +120,11 @@ export default function DonationProcess() {
         </div>
 
         {/* Steps timeline */}
-        <div className="relative mb-20">
-          {/* Vertical line (desktop) */}
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-crimson/20 via-crimson/10 to-transparent" aria-hidden="true" />
+        <div className="relative mb-12 sm:mb-20">
+          {/* Vertical line (mobile left-side + desktop center) */}
+          <div className="absolute left-[22px] lg:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-crimson/20 via-crimson/10 to-transparent" aria-hidden="true" />
 
-          <div className="space-y-8 lg:space-y-12">
+          <div className="space-y-6 sm:space-y-8 lg:space-y-12">
             {steps.map((step, i) => (
               <motion.div
                 key={step.num}
@@ -134,7 +134,7 @@ export default function DonationProcess() {
                 transition={{ delay: i * 0.05 }}
                 className="relative lg:grid lg:grid-cols-2 lg:gap-12 items-center"
               >
-                <div className={`${i % 2 === 1 ? 'lg:order-2 lg:text-left' : 'lg:text-right'} mb-6 lg:mb-0`}>
+                <div className={`${i % 2 === 1 ? 'lg:order-2 lg:text-left' : 'lg:text-right'} mb-6 lg:mb-0 ml-14 lg:ml-0`}>
                   <div className={`inline-flex items-center gap-3 mb-4 ${i % 2 === 1 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
                     <div className="w-11 h-11 rounded-xl gradient-crimson text-white flex items-center justify-center shadow-md shadow-red-900/10">
                       <step.icon className="w-5 h-5" aria-hidden="true" />
@@ -163,7 +163,7 @@ export default function DonationProcess() {
                 <div className={`hidden lg:block ${i % 2 === 1 ? 'lg:order-1' : ''}`} />
 
                 {/* Dot on the line */}
-                <div className="hidden lg:flex absolute left-1/2 top-6 -translate-x-1/2 w-4 h-4 rounded-full bg-crimson border-4 border-cream z-10" aria-hidden="true" />
+                <div className="absolute left-[16px] lg:left-1/2 top-6 lg:-translate-x-1/2 w-4 h-4 rounded-full bg-crimson border-4 border-white lg:border-cream z-10" aria-hidden="true" />
               </motion.div>
             ))}
           </div>

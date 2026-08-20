@@ -12,7 +12,7 @@ export default function BloodReserves() {
   const criticalCount = bloodReserves.filter((b) => b.level === 'critique').length;
 
   return (
-    <section id='reserves' className='py-20 sm:py-28 bg-cream'>
+    <section id='reserves' className='py-14 sm:py-20 lg:py-28 bg-cream'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div ref={ref} className='text-center max-w-2xl mx-auto mb-16'>
           <motion.span
@@ -115,7 +115,7 @@ function BloodBarCard({ blood, index }: { blood: (typeof bloodReserves)[0]; inde
           style={{ backgroundColor: color }}
         />
       </div>
-      <div className={`mt-3 text-[10px] sm:text-xs font-bold uppercase tracking-wider ${isCritical ? 'animate-pulse' : ''}`} style={{ color }}>
+      <div className={`mt-3 text-xs sm:text-xs font-bold uppercase tracking-wider ${isCritical ? 'animate-pulse' : ''}`} style={{ color }}>
         {label}
       </div>
     </motion.div>

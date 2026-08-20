@@ -61,7 +61,7 @@ export default function WhyDonate() {
   const inView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
-    <section id="pourquoi" className="py-20 sm:py-28 bg-cream">
+    <section id="pourquoi" className="py-14 sm:py-20 lg:py-28 bg-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div ref={sectionRef} className="text-center max-w-2xl mx-auto mb-16">
@@ -93,7 +93,7 @@ export default function WhyDonate() {
         </div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-20">
           {stats.map((stat) => (
             <AnimatedCounter key={stat.value} {...stat} />
           ))}
