@@ -51,11 +51,9 @@ src/
 │   ├── CenterMap.tsx        # Carte Leaflet, marqueurs, popups, FlyTo, FitBounds, géolocalisation
 │   ├── BloodReserves.tsx    # C7 : 8 groupes sanguins, barres verticales animées, alerte critique
 │   ├── FAQ.tsx              # C8 : 12 Q/R, 5 catégories, accordion, filtres
-│   ├── PreparationGuide.tsx # Conseils avant/après le don
-│   ├── SectionTabs.tsx      # Tabbed navigation (role=tablist, arrow keys, aria-selected)
 │   └── Footer.tsx           # Bannière CTA gradient, 4 colonnes, urgence 117, disclaimer médical
 ├── data/
-│   ├── centers.ts           # 11 centres CNTS (Bénin) avec coordonnées GPS, horaires, types de dons
+│   ├── centers.ts           # 10 centres CNTS (Bénin) avec coordonnées GPS, horaires, types de dons
 │   ├── blood-reserves.ts    # 8 groupes, niveaux, jours de réserve, helpers de coloration
 │   └── faq.ts               # 12 items typés (5 catégories)
 └── lib/
@@ -106,7 +104,7 @@ Champ poids : uniquement chiffres + un seul point décimal. Bloque les lettres, 
 - Anti-saisie non numérique sur tous les champs numériques
 
 **Annuaire + Carte Leaflet**
-- 11 centres CNTS sur 9 villes béninoises
+- 10 centres CNTS sur 10 villes béninoises
 - 3 modes d'affichage : liste, carte, ou les deux côte à côte
 - Recherche textuelle + filtres par ville, type de don, statut ouvert/pas de RDV
 - Géolocalisation navigateur avec fallback Bénin

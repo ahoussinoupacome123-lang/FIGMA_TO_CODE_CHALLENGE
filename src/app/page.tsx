@@ -19,9 +19,9 @@ export default function Home() {
         <WhoCanDonate />
         <EligibilityTest />
         <DonationProcess />
+        <CenterDirectory />
         <BloodReserves />
         <FAQ />
-        <CenterDirectory />
       </main>
       <Footer />
     </div>

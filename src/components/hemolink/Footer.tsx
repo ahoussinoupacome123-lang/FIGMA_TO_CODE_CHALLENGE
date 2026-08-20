@@ -61,12 +61,12 @@ export default function Footer() {
                 La plateforme solidaire du don de sang au Bénin. Facilitons ensemble l&apos;accès au sang pour tous ceux qui en ont besoin.
               </p>
               <div className="flex gap-3">
-                <a href="#" className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center hover:bg-crimson transition-colors" aria-label="Facebook">
+                <span className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center opacity-50 cursor-not-allowed" aria-label="Facebook (bientôt disponible)" role="img">
                   <Facebook className="w-4 h-4" />
-                </a>
-                <a href="#" className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center hover:bg-crimson transition-colors" aria-label="Twitter">
+                </span>
+                <span className="w-10 h-10 bg-stone-800 rounded-full flex items-center justify-center opacity-50 cursor-not-allowed" aria-label="Twitter (bientôt disponible)" role="img">
                   <Twitter className="w-4 h-4" />
-                </a>
+                </span>
               </div>
             </div>
 

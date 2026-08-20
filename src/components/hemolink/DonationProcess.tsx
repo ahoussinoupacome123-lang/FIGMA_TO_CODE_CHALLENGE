@@ -132,9 +132,7 @@ export default function DonationProcess() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: i * 0.05 }}
-                className={`relative lg:grid lg:grid-cols-2 lg:gap-12 items-center ${
-                  i % 2 === 1 ? 'lg:direction-rtl' : ''
-                }`}
+                className="relative lg:grid lg:grid-cols-2 lg:gap-12 items-center"
               >
                 <div className={`${i % 2 === 1 ? 'lg:order-2 lg:text-left' : 'lg:text-right'} mb-6 lg:mb-0`}>
                   <div className={`inline-flex items-center gap-3 mb-4 ${i % 2 === 1 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
@@ -162,7 +160,7 @@ export default function DonationProcess() {
                   </ul>
                 </div>
                 {/* Empty space for the other column */}
-                <div className="hidden lg:block" />
+                <div className={`hidden lg:block ${i % 2 === 1 ? 'lg:order-1' : ''}`} />
 
                 {/* Dot on the line */}
                 <div className="hidden lg:flex absolute left-1/2 top-6 -translate-x-1/2 w-4 h-4 rounded-full bg-crimson border-4 border-cream z-10" aria-hidden="true" />
