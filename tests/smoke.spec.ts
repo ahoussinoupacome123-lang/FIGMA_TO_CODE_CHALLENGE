@@ -36,46 +36,32 @@ test.describe('HemoLink', () => {
     const nav = page.locator('nav[aria-label="Navigation principale"]');
     await expect(nav.locator('text=Pourquoi ?')).toBeVisible();
     await expect(nav.locator('text=FAQ')).toBeVisible();
-    await expect(nav.locator('text=Centres')).toBeVisible();
+    await expect(nav.locator('text=Le don')).toBeVisible();
   });
 
-  test('section tabs are present and clickable', async ({ page }) => {
+  test('all major sections are rendered', async ({ page }) => {
     await page.goto('/');
-    const tabs = page.locator('[role="tablist"]');
-    await expect(tabs).toBeVisible();
-
-    // Verify all expected tab labels exist
-    await expect(tabs.locator('[role="tab"]:has-text("Pourquoi ?")')).toBeAttached();
-    await expect(tabs.locator('[role="tab"]:has-text("FAQ")')).toBeAttached();
-    await expect(tabs.locator('[role="tab"]:has-text("Réserves")')).toBeAttached();
-
-    // Click FAQ tab — panel content renders in DOM (may be animating)
-    await page.locator('#tab-faq').click();
-    await page.waitForTimeout(500);
-    const faqButtons = page.locator('#panel-faq button[aria-expanded]');
-    expect(await faqButtons.count()).toBeGreaterThan(0);
+    const sections = ['pourquoi', 'eligibilite', 'test', 'deroulement', 'reserves', 'faq', 'centres'];
+    for (const id of sections) {
+      const el = page.locator(`#${id}`);
+      await expect(el).toBeAttached({ timeout: 5000 });
+    }
   });
 
   test('eligibility form renders and validates', async ({ page }) => {
     await page.goto('/');
+    await page.locator('#test').scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
 
-    // Click the eligibility tab via Playwright (it's in the visible tablist)
-    await page.locator('#tab-test').click();
-    await page.waitForTimeout(1000);
-
-    // The form exists in DOM — verify the form structure is present
-    const form = page.locator('#panel-test form');
+    const form = page.locator('#test form');
     expect(await form.count()).toBe(1);
 
-    // Verify form has the required inputs
     await expect(page.locator('#age')).toBeAttached();
     await expect(page.locator('#birthYear')).toBeAttached();
     await expect(page.locator('#weight')).toBeAttached();
     await expect(page.locator('#lastDonation')).toBeAttached();
 
-    // Verify gender radio buttons exist with proper ARIA
-    const radios = page.locator('#panel-test [role="radio"]');
+    const radios = page.locator('#test [role="radio"]');
     expect(await radios.count()).toBeGreaterThanOrEqual(2);
   });
 
