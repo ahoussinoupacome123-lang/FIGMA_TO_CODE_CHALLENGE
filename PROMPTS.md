@@ -9,7 +9,7 @@ Ce document documente la méthodologie de développement d'HemoLink dans le cadr
 | Outil | Usage |
 |---|---|
 | **OpenCode** (Claude, big-pickle) | Assistant CLI principal — génération de code, itération, debugging, refactoring, documentation |
-| **z.ai** (Gemma 3) | Assistant web — vérification de conformité au brief, audit de scoring, suggestions d'amélioration UX/UI |
+| **z.ai** (GLM 5.2) | Assistant web — vérification de conformité au brief, audit de scoring, suggestions d'amélioration UX/UI |
 
 **Workflow** : OpenCode pour l'implémentation technique, z.ai pour la review et l'audit qualité.
 
@@ -184,7 +184,3 @@ L'IA ne peut pas fournir de données temps réel (réserves sanguines, statuts d
 ### 6. Performance mobile des animations
 
 Framer Motion `whileInView` sur mobile peut causer des saccades. L'ajout de `prefers-reduced-motion` et l'optimisation iOS (`-webkit-overflow-scrolling: touch`) ont été des ajustements manuels post-itération que l'IA n'avait pas anticipés.
-
-### 7. Git messages incohérents
-
-L'IA produit parfois des messages de commit avec des majuscules (`Fix(ci):`, `CI:`) au lieu du format conventionnel minuscule (`fix(ci):`, `ci:`). Ces 4 commits incohérents restent dans l'historique pushed.
