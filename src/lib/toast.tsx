@@ -69,7 +69,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     <ToastContext.Provider value={{ toast }}>
       {children}
       {/* Toast container */}
-      <div className="fixed bottom-6 right-6 z-[100] flex flex-col gap-3 pointer-events-none max-w-sm w-full" role="status" aria-live="polite">
+      <div className="fixed bottom-0 left-0 right-0 sm:bottom-6 sm:left-auto sm:right-6 z-[100] flex flex-col gap-3 pointer-events-none sm:max-w-sm w-full px-4 pb-4 sm:px-0 sm:pb-0" role="status" aria-live="polite">
         <AnimatePresence>
           {toasts.map((t) => {
             const Icon = icons[t.type];
@@ -87,7 +87,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 {t.persistent ? (
                   <button
                     onClick={() => dismiss(t.id)}
-                    className="flex-shrink-0 px-3 py-1 rounded-lg bg-white/80 hover:bg-white text-xs font-semibold border border-current/20 transition-colors"
+                    className="flex-shrink-0 px-4 py-1.5 rounded-lg bg-white/80 hover:bg-white text-xs font-semibold border border-current/20 transition-colors min-h-[36px]"
                   >
                     OK
                   </button>
