@@ -118,13 +118,13 @@ export default function EligibilityTest() {
           </motion.p>
         </div>
 
-        <div className="max-w-xl mx-auto">
+        <div className="max-w-xl mx-auto overflow-hidden">
           <motion.form
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.3 }}
             onSubmit={handleSubmit}
-            className="bg-white rounded-2xl shadow-lg shadow-red-900/5 p-6 sm:p-8 border border-red-100/50"
+            className="bg-white rounded-2xl shadow-lg shadow-red-900/5 p-6 sm:p-8 border border-red-100/50 overflow-hidden"
             aria-label="Formulaire de test d'éligibilité au don de sang"
           >
             {/* Gender */}
