@@ -4,6 +4,12 @@
 
 ---
 
+## Démo
+
+[![HemoLink Demo](./demo.mp4)](./demo.mp4)
+
+---
+
 ## Contexte du challenge
 
 > *Note : Les challengers sont libres de choisir le nom de leur projet (le nom « HemoLink » est utilisé ici à titre d'exemple).*
