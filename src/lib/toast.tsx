@@ -78,7 +78,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                 key={t.id}
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, x: 80, scale: 0.95 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
                 transition={{ duration: 0.25, ease: 'easeOut' }}
                 className={`pointer-events-auto flex items-start gap-3 px-4 py-3.5 rounded-xl border shadow-lg backdrop-blur-sm ${styles[t.type]}`}
               >

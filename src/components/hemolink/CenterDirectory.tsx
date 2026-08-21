@@ -157,24 +157,24 @@ export default function CenterDirectory() {
           </div>
 
           {/* Geolocation + View toggle + count */}
-          <div className="flex items-center justify-between mt-4">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 mt-4">
+            <div className="flex items-center gap-2 min-w-0">
               <button
                 onClick={handleLocate}
-                className="flex items-center gap-1.5 text-sm font-medium text-crimson hover:text-crimson-dark transition-colors"
+                className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-crimson hover:text-crimson-dark transition-colors whitespace-nowrap"
                 aria-label="Utiliser ma position"
               >
                 {geoStatus === 'requesting' && <Loader2 className="w-4 h-4 animate-spin" />}
                 {geoStatus !== 'requesting' && geoStatus !== 'granted' && <Crosshair className="w-4 h-4" />}
                 {geoStatus === 'granted' && <Navigation className="w-4 h-4" />}
-                <span>{geoStatus === 'granted' ? 'Localisé' : geoStatus === 'requesting' ? 'Localisation...' : 'Utiliser ma position'}</span>
+                <span>{geoStatus === 'granted' ? 'Localisé' : geoStatus === 'requesting' ? 'Localisation...' : 'Ma position'}</span>
               </button>
-              <span className="text-stone-300">|</span>
-              <p className="text-sm text-stone-700" aria-live="polite">
+              <span className="text-stone-300 text-sm">|</span>
+              <p className="text-xs sm:text-sm text-stone-700 whitespace-nowrap" aria-live="polite">
                 <span className="font-semibold text-stone-700">{filtered.length}</span> centre{filtered.length !== 1 ? 's' : ''} trouvé{filtered.length !== 1 ? 's' : ''}
               </p>
             </div>
-            <div className="flex items-center bg-stone-100 rounded-lg p-0.5" role="radiogroup" aria-label="Mode d'affichage">
+            <div className="flex items-center bg-stone-100 rounded-lg p-0.5 flex-shrink-0" role="radiogroup" aria-label="Mode d'affichage">
               <ViewButton active={viewMode === 'list'} onClick={() => setViewMode('list')} label="Liste" icon={<List className="w-3.5 h-3.5" />} />
               <ViewButton active={viewMode === 'map'} onClick={() => setViewMode('map')} label="Carte" icon={<MapIcon className="w-3.5 h-3.5" />} />
               <ViewButton active={viewMode === 'both'} onClick={() => setViewMode('both')} label="Liste + Carte" icon={<><List className="w-3.5 h-3.5" /> <MapIcon className="w-3.5 h-3.5" /></>} hidden />

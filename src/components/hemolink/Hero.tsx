@@ -173,21 +173,21 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-20"
         >
-          <dl className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-stone-900 text-center border border-red-50">
+          <dl className="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-stone-900 text-center border border-red-50">
             <div>
-              <dt className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">1 Don</dt>
+              <dt className="text-xl sm:text-2xl md:text-3xl font-extrabold text-crimson mb-1">1 Don</dt>
                 <dd className="text-stone-700 text-xs sm:text-sm">= 3 vies sauvées</dd>
             </div>
-            <div className="border-l border-stone-100 pl-4 sm:pl-0">
-              <dt className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">450ml</dt>
+            <div>
+              <dt className="text-xl sm:text-2xl md:text-3xl font-extrabold text-crimson mb-1">450ml</dt>
               <dd className="text-stone-700 text-xs sm:text-sm">Volume d'un don</dd>
             </div>
-            <div className="border-l border-stone-100 pl-4 sm:pl-0">
-              <dt className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">24/7</dt>
+            <div className="md:border-l md:border-stone-100 md:pl-4">
+              <dt className="text-xl sm:text-2xl md:text-3xl font-extrabold text-crimson mb-1">24/7</dt>
               <dd className="text-stone-700 text-xs sm:text-sm">Disponibilité centres</dd>
             </div>
-            <div className="border-l border-stone-100 pl-4 sm:pl-0">
-              <dt className="text-2xl sm:text-3xl font-extrabold text-crimson mb-1">15 Min</dt>
+            <div className="md:border-l md:border-stone-100 md:pl-4">
+              <dt className="text-xl sm:text-2xl md:text-3xl font-extrabold text-crimson mb-1">15 Min</dt>
               <dd className="text-stone-700 text-xs sm:text-sm">Temps moyen du don</dd>
             </div>
           </dl>

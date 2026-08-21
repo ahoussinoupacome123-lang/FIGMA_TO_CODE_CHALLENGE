@@ -141,8 +141,8 @@ export default function DonationProcess() {
                     </div>
                     <div>
                       <span className="text-xs font-mono text-stone-700">ÉTAPE {step.num}</span>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-bold text-stone-900">{step.title}</h3>
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <h3 className="text-base sm:text-lg font-bold text-stone-900">{step.title}</h3>
                         <span className="text-xs bg-red-50 text-crimson font-medium px-2.5 py-0.5 rounded-full whitespace-nowrap">
                           {step.duration}
                         </span>
