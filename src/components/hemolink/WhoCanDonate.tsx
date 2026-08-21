@@ -115,14 +115,14 @@ export default function WhoCanDonate() {
               <p className="text-sm text-stone-700">Ces situations nécessitent d\'attendre avant de donner</p>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {temporaryDeferrals.map((d) => (
               <div
                 key={d.condition}
-                className="flex items-center justify-between bg-white/70 rounded-xl px-4 py-3 border border-amber-100"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-white/70 rounded-xl px-4 py-3 border border-amber-100"
               >
                 <span className="text-sm text-stone-700">{d.condition}</span>
-                <span className="text-xs font-semibold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full whitespace-nowrap ml-2">
+                <span className="text-xs font-semibold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-full whitespace-nowrap self-start sm:self-auto">
                   {d.delay}
                 </span>
               </div>
