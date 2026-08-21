@@ -149,16 +149,6 @@ export default function Navigation() {
                   {link.label}
                 </a>
               ))}
-              <a
-                href="#test"
-                className={`ml-2 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 ${
-                  scrolled
-                    ? 'bg-crimson text-white hover:bg-crimson-dark shadow-sm'
-                    : 'bg-white/20 text-white border border-white/30 hover:bg-white/30'
-                }`}
-              >
-                Donner maintenant
-              </a>
             </div>
 
             {/* Mobile toggle */}

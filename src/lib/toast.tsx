@@ -53,7 +53,11 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 
   const toast = useCallback((message: string, type: ToastType = 'error', persistent = false) => {
     const id = ++counter;
-    setToasts((prev) => [...prev, { id, message, type, persistent }]);
+    setToasts((prev) => {
+      // Dismiss existing persistent toasts before showing a new one
+      const filtered = persistent ? prev.filter((t) => !t.persistent) : prev;
+      return [...filtered, { id, message, type, persistent }];
+    });
     if (!persistent) {
       setTimeout(() => {
         setToasts((prev) => prev.filter((t) => t.id !== id));

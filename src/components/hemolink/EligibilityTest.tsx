@@ -19,7 +19,7 @@ export default function EligibilityTest() {
   const [result, setResult] = useState<EligibilityResult | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  function validate(): boolean {
+  function validate(): Record<string, string> {
     const e: Record<string, string> = {};
     const ageNum = parseInt(age);
     const weightNum = parseFloat(weight);
@@ -51,19 +51,16 @@ export default function EligibilityTest() {
     }
 
     setErrors(e);
-    return Object.keys(e).length === 0;
+    return e;
   }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setResult(null);
-    if (!validate()) {
-      const errorMsgs = Object.values(errors).filter(Boolean);
-      if (errorMsgs.length > 0) {
-        toast(errorMsgs.join(' '), 'error', true);
-      } else {
-        toast('Veuillez corriger les erreurs du formulaire.', 'error', true);
-      }
+    const validationErrors = validate();
+    const errorMsgs = Object.values(validationErrors).filter(Boolean);
+    if (errorMsgs.length > 0) {
+      toast(errorMsgs.join(' '), 'error', true);
       return;
     }
 

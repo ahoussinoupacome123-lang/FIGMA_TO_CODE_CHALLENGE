@@ -6,7 +6,7 @@
 
 ## Démo
 
-[Voir la démo](./demo.mp4)
+<video src="./demo.mp4" controls width="100%" preload="metadata"></video>
 
 ---
 
@@ -65,8 +65,7 @@ src/
 └── lib/
     ├── eligibility.ts      # Pure function : checkEligibility(input) → { status, reasons, nextDate }
     ├── geo.tsx              # GeoProvider context: geolocation with Benin fallback
-    ├── toast.tsx            # ToastProvider context: animated notifications (success/error/warning/info)
-    └── utils.ts             # cn() helper (clsx + tailwind-merge)
+    └── toast.tsx            # ToastProvider context: animated notifications (success/error/warning/info)
 ```
 
 ### Design system
@@ -89,7 +88,7 @@ Animations CSS custom : `heartbeat`, `float`, `drip`, `pulse-dot`. Framer Motion
 Le déroulement du don et la préparation sont un même parcours temporel. Les séparer créerait une rupture dans le flux. J'ai fusionné ces deux sections en une timeline unique avec les conseils intégrés.
 
 **2. Géolocalisation avec fallback Bénin**
-L'API `navigator.geolocation` est utilisée pour centrer la carte sur la position de l'utilisateur. Si l'autorisation est refusée, la carte fait un `flyTo` sur le centre du Bénin (6.4961°N, 2.6292°E) avec un toast informatif.
+L'API `navigator.geolocation` est utilisée pour centrer la carte sur la position de l'utilisateur. Si l'autorisation est refusée, la carte fait un `flyTo` sur la zone de Porto-Novo/Cotonou (6.4961°N, 2.6292°E) avec un toast informatif.
 
 **3. Validation croisée âge/année de naissance**
 Le formulaire d'éligibilité vérifie la cohérence entre l'âge déclaré et l'année de naissance (tolérance ±1 an pour les anniversaires non passés). Le message d'erreur est contextualisé : *"Si vous êtes né(e) en 1998, vous devriez avoir 28 ou 27 ans, et non 35 ans."*
@@ -137,7 +136,7 @@ Champ poids : uniquement chiffres + un seul point décimal. Bloque les lettres, 
 
 ### Performance
 
-- **0 dépendances radium/shadcn** — composants custom Tailwind uniquement
+- **0 framework UI externe** — composants custom Tailwind uniquement
 - **Leaflet lazy-loaded** via `next/dynamic({ ssr: false })`
 - **Framer Motion `useInView`** avec `once: true` — les animations ne se déclenchent qu'une fois
 - **Données statiques** — aucun fetch réseau, tout est en bundle
