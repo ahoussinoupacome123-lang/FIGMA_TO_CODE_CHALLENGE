@@ -249,7 +249,7 @@ export default function EligibilityTest() {
             </div>
 
             {/* Last donation */}
-            <div className="mb-8">
+            <div className="mb-8 overflow-hidden">
               <label htmlFor="lastDonation" className="block text-sm font-semibold text-stone-800 mb-2">
                 Date de votre dernier don <span className="font-normal text-stone-600">(facultatif)</span>
               </label>
@@ -259,7 +259,8 @@ export default function EligibilityTest() {
                 value={lastDonation}
                 onChange={(e) => setLastDonation(e.target.value)}
                 max={new Date().toISOString().split('T')[0]}
-                className="w-full max-w-full px-4 py-3 rounded-xl border-2 border-stone-200 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:outline-none focus:border-crimson"
+                className="w-full min-w-0 px-4 py-3 rounded-xl border-2 border-stone-200 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:outline-none focus:border-crimson"
+                style={{ maxWidth: '100%' }}
                 aria-describedby="lastDonation-hint"
               />
               <p id="lastDonation-hint" className="text-xs text-stone-700 mt-1.5 flex items-center gap-1">
