@@ -4,6 +4,12 @@ Ce document documente la méthodologie de développement d'HemoLink dans le cadr
 
 ---
 
+## Rôle de l'IA et rôle du développeur
+
+L'IA a été utilisée comme copilote et outil d'accélération, et non comme substitut à la décision technique. Les choix concernant l'architecture, la hiérarchie des contenus, l'identité visuelle, la validation du comportement et les corrections finales ont été vérifiés et arbitrés manuellement.
+
+---
+
 ## Outils d'IA sollicités
 
 | Outil | Usage |
@@ -51,15 +57,17 @@ Sections dans cet ordre :
 
 **Résultat** : page.tsx avec 10 composants séquentiels.
 
-### Prompt 3 — Référence visuelle SuperDesign
+### Prompt 3 — Exploration d'une direction visuelle
 
 ```
-Inspirer du code SuperDesign pour :
-- Goutte de sang hero : 280px, double halo flou (orange + rouge), mini-gouttes orbitales
+Exploration visuelle inspirée de patterns SuperDesign pour :
+- Goutte de sang hero : double halo flou (orange + rouge), mini-gouttes orbitales
 - Réserves : barres verticales (pas horizontales)
 - Footer : structure 4 colonnes + bannière CTA
 - Navigation : épurée à 5 liens
 ```
+
+Une référence SuperDesign a été utilisée pour explorer certaines directions visuelles, puis adaptée et intégrée dans une identité propre au projet.
 
 **Résultat** : Hero avec SVG animé (heartbeat CSS + float + glow), BloodReserves avec barres verticales.
 
@@ -87,7 +95,7 @@ Responsive 390px-1440px. Menu mobile drawer Framer Motion.
 - Build : 0 erreurs TS, 0 warnings ESLint
 ```
 
-**Résultat** : eligibility.ts avec algorithme béninois, inputs stricts, centres avec GPS réels.
+**Résultat** : eligibility.ts avec l'algorithme d'éligibilité défini par le brief, adapté au contexte du projet au Bénin, validation robuste des entrées, centres avec coordonnées GPS vérifiées pour les centres référencés.
 
 ### Prompt 6 — Données centroïdes (10 centres)
 
@@ -97,7 +105,7 @@ Vérifier qu'il y a exactement 10 centres avec les 10 villes requises :
 Cotonou, Porto-Novo, Parakou, Abomey-Calavi, Djougou, Natitingou, Lokossa, Ouidah, Bohicon, Kandi.
 ```
 
-**Résultat** : centers.ts avec 10 centres uniques, 10 villes, coordonnées GPS réelles.
+**Résultat** : centers.ts avec 10 centres uniques, 10 villes, coordonnées GPS vérifiées pour les centres référencés.
 
 ### Prompt 7 — Audit scoring et corrections
 
@@ -111,7 +119,7 @@ Vérifier la conformité au brief pour chaque catégorie de scoring :
 - Process (10pts) : CI v4, PR templates, .editorconfig, CONTRIBUTING.md
 ```
 
-**Résultat** : 12 corrections techniques appliquées.
+**Résultat** : audit de conformité réalisé sur les sept catégories hors vote public, suivi de plusieurs corrections concernant l'accessibilité, la cohérence visuelle, l'architecture, le responsive et la qualité du dépôt.
 
 ---
 
@@ -152,10 +160,10 @@ Vérifier la conformité au brief pour chaque catégorie de scoring :
 **Quoi** : Réordonné CenterDirectory (C6) avant BloodReserves (C7) et FAQ (C8).
 **Pourquoi** : Le brief liste les sections C1→C8 séquentiellement. L'ordre initial avait C7→C8→C6, ce qui violait la séquence attendue.
 
-### 8. Input stricts (sécurité)
+### 8. Validation robuste des entrées
 
 **Quoi** : Implémenté 4 couches de validation sur les champs numériques : keydown filter, regex onChange, onPaste sanitize, inputMode.
-**Pourquoi** : Un seul filtre ne suffit pas — les utilisateurs peuvent coller du texte, utiliser des caractères spéciaux, ou bypasser le keydown. La défense en profondeur est nécessaire.
+**Pourquoi** : Un seul filtre ne suffit pas — les utilisateurs peuvent coller du texte, utiliser des caractères spéciaux, ou bypasser le keydown. Ces différentes couches permettent de gérer les différentes méthodes de saisie et d'éviter les valeurs inattendues côté interface.
 
 ---
 
@@ -171,7 +179,7 @@ L'IA a proposé `lg:direction-rtl` — une classe qui n'existe ni dans Tailwind 
 
 ### 3. Accessibilité incomplète par défaut
 
-L'IA génère naturellement des `<div>` pour tout et omet les rôles ARIA. Un audit manuel systématique a révélé l'absence de `role="progressbar"`, `role="radiogroup"`, `aria-checked`, `aria-live`, `aria-hidden` sur les icônes décoratives. L'IA couvre ~70% de l'a11y ; les 30% restants nécessitent un audit humain.
+L'IA génère naturellement des `<div>` pour tout et omet les rôles ARIA. Un audit manuel systématique a révélé l'absence de `role="progressbar"`, `role="radiogroup"`, `aria-checked`, `aria-live`, `aria-hidden` sur les icônes décoratives. L'IA a fourni une première base d'accessibilité, mais un audit humain systématique a été nécessaire pour identifier et corriger plusieurs éléments manquants.
 
 ### 4. Conflits de state management
 
@@ -184,3 +192,9 @@ L'IA ne peut pas fournir de données temps réel (réserves sanguines, statuts d
 ### 6. Performance mobile des animations
 
 Framer Motion `whileInView` sur mobile peut causer des saccades. L'ajout de `prefers-reduced-motion` et l'optimisation iOS (`-webkit-overflow-scrolling: touch`) ont été des ajustements manuels post-itération que l'IA n'avait pas anticipés.
+
+---
+
+## Bilan de la collaboration IA / développeur
+
+L'IA a été un accélérateur efficace pour la génération de code, la structure des composants et l'audit de conformité. Cependant, les choix d'architecture (GeoProvider, fusion C4+C5, section ordering), les corrections CSS (z-index, RTL), la vérification visuelle et les ajustements d'accessibilité ont nécessité une intervention humaine systématique. Le développeur a toujours conservé le contrôle sur les décisions techniques et produit.
