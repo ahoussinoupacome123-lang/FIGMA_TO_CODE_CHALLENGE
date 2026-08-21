@@ -37,13 +37,3 @@ export function getLevelLabel(level: BloodLevel): string {
   };
   return labels[level];
 }
-
-export function getLevelDescription(level: BloodLevel): string {
-  const descriptions: Record<BloodLevel, string> = {
-    critique: 'Réserves inférieures à 3 jours. Besoin urgent de donneurs.',
-    faible: 'Réserves pour 3-5 jours. Les dons sont nécessaires.',
-    suffisant: 'Réserves pour 5-7 jours. Niveau acceptable.',
-    optimal: 'Réserves supérieures à 7 jours. Bon niveau.',
-  };
-  return descriptions[level];
-}
