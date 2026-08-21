@@ -58,7 +58,12 @@ export default function EligibilityTest() {
     e.preventDefault();
     setResult(null);
     if (!validate()) {
-      toast('Veuillez corriger les erreurs du formulaire.', 'error');
+      const errorMsgs = Object.values(errors).filter(Boolean);
+      if (errorMsgs.length > 0) {
+        toast(errorMsgs.join(' '), 'error', true);
+      } else {
+        toast('Veuillez corriger les erreurs du formulaire.', 'error', true);
+      }
       return;
     }
 

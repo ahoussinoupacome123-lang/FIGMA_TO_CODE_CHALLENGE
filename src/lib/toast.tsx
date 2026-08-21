@@ -10,10 +10,11 @@ interface Toast {
   id: number;
   message: string;
   type: ToastType;
+  persistent: boolean;
 }
 
 interface ToastContextValue {
-  toast: (message: string, type?: ToastType) => void;
+  toast: (message: string, type?: ToastType, persistent?: boolean) => void;
 }
 
 const ToastContext = createContext<ToastContextValue | null>(null);
@@ -50,12 +51,14 @@ const iconStyles: Record<ToastType, string> = {
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
-  const toast = useCallback((message: string, type: ToastType = 'error') => {
+  const toast = useCallback((message: string, type: ToastType = 'error', persistent = false) => {
     const id = ++counter;
-    setToasts((prev) => [...prev, { id, message, type }]);
-    setTimeout(() => {
-      setToasts((prev) => prev.filter((t) => t.id !== id));
-    }, 5000);
+    setToasts((prev) => [...prev, { id, message, type, persistent }]);
+    if (!persistent) {
+      setTimeout(() => {
+        setToasts((prev) => prev.filter((t) => t.id !== id));
+      }, 5000);
+    }
   }, []);
 
   const dismiss = useCallback((id: number) => {
@@ -81,13 +84,22 @@ export function ToastProvider({ children }: { children: ReactNode }) {
               >
                 <Icon className={`w-5 h-5 mt-0.5 flex-shrink-0 ${iconStyles[t.type]}`} />
                 <p className="flex-1 text-sm font-medium leading-snug">{t.message}</p>
-                <button
-                  onClick={() => dismiss(t.id)}
-                  className="flex-shrink-0 p-0.5 rounded-md hover:bg-black/5 transition-colors"
-                  aria-label="Fermer"
-                >
-                  <X className="w-4 h-4 opacity-50" />
-                </button>
+                {t.persistent ? (
+                  <button
+                    onClick={() => dismiss(t.id)}
+                    className="flex-shrink-0 px-3 py-1 rounded-lg bg-white/80 hover:bg-white text-xs font-semibold border border-current/20 transition-colors"
+                  >
+                    OK
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => dismiss(t.id)}
+                    className="flex-shrink-0 p-0.5 rounded-md hover:bg-black/5 transition-colors"
+                    aria-label="Fermer"
+                  >
+                    <X className="w-4 h-4 opacity-50" />
+                  </button>
+                )}
               </motion.div>
             );
           })}
