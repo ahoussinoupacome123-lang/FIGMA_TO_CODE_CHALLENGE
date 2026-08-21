@@ -66,10 +66,7 @@ export default function EligibilityTest() {
       age: parseInt(age),
       weight: parseFloat(weight),
       gender,
-      lastDonationDate: lastDonation ? (() => {
-        const [d, m, y] = lastDonation.split('/');
-        return `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
-      })() : null,
+      lastDonationDate: lastDonation || null,
     });
     setResult(res);
     // Auto-scroll to result
@@ -258,23 +255,15 @@ export default function EligibilityTest() {
               </label>
               <input
                 id="lastDonation"
-                type="text"
-                inputMode="numeric"
-                placeholder="JJ/MM/AAAA"
+                type="date"
                 value={lastDonation}
-                onChange={(e) => {
-                  let v = e.target.value.replace(/[^0-9/]/g, '');
-                  if (v.length === 2 && lastDonation.length === 1) v += '/';
-                  if (v.length === 5 && lastDonation.length === 4) v += '/';
-                  if (v.length > 10) v = v.slice(0, 10);
-                  setLastDonation(v);
-                }}
-                maxLength={10}
-                className="w-full px-4 py-3 rounded-xl border-2 border-stone-200 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:outline-none focus:border-crimson"
+                onChange={(e) => setLastDonation(e.target.value)}
+                max={new Date().toISOString().split('T')[0]}
+                className="date-input w-full px-4 py-3 rounded-xl border-2 border-stone-200 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:outline-none focus:border-crimson"
                 aria-describedby="lastDonation-hint"
               />
               <p id="lastDonation-hint" className="text-xs text-stone-700 mt-1.5 flex items-center gap-1">
-                <HelpCircle className="w-3.5 h-3.5" /> Laissez vide si vous n'avez jamais donné. Format : JJ/MM/AAAA
+                <HelpCircle className="w-3.5 h-3.5" /> Laissez vide si vous n'avez jamais donné.
               </p>
             </div>
 

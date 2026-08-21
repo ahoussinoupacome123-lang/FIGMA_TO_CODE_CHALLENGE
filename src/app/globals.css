@@ -182,6 +182,16 @@
   border-radius: 4px;
 }
 
+/* Force native date picker to fit container */
+.date-input {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+.date-input::-webkit-calendar-picker-indicator {
+  margin-left: auto;
+}
+
 /* Hide scrollbar */
 .scrollbar-none::-webkit-scrollbar { display: none; }
 .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
