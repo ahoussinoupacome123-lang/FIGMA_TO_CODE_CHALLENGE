@@ -138,12 +138,12 @@ export default function CenterDirectory() {
           </div>
 
           {/* Quick filter pills */}
-          <div className='flex items-center gap-2 mt-4 overflow-x-auto pb-1' role='radiogroup' aria-label='Filtres rapides'>
-            {([['all', 'Tous les centres'], ['open', 'Ouverts maintenant'], ['no_rdv', 'Sans rendez-vous']] as const).map(([val, label]) => (
+          <div className='flex items-center gap-1.5 sm:gap-2 mt-4 overflow-x-auto pb-1 scrollbar-none' role='radiogroup' aria-label='Filtres rapides'>
+            {([['all', 'Tous'], ['open', 'Ouverts maintenant'], ['no_rdv', 'Sans RDV']] as const).map(([val, label]) => (
               <button
                 key={val}
                 onClick={() => setQuickFilter(val)}
-                className={`whitespace-nowrap px-4 py-2 rounded-2xl text-sm font-medium transition-all border ${
+                className={`whitespace-nowrap px-3 sm:px-4 py-2 rounded-2xl text-xs sm:text-sm font-medium transition-all border flex-shrink-0 ${
                   quickFilter === val
                     ? 'bg-crimson text-white border-crimson shadow-sm'
                     : 'bg-white text-stone-600 border-stone-200 hover:border-crimson hover:text-crimson'
