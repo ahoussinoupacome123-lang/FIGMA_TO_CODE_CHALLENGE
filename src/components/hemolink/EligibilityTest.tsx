@@ -189,7 +189,7 @@ export default function EligibilityTest() {
                   value={age}
                   onChange={(e) => { const v = e.target.value.replace(/[^0-9]/g, ''); setAge(v); setErrors((prev) => ({ ...prev, age: '', birthYear: '' })); }}
                   onKeyDown={(e) => { if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') e.preventDefault(); }}
-                  onPaste={(e) => { const pasted = e.clipboardData.getData('text').replace(/[^0-9]/g, ''); e.preventDefault(); (document.getElementById('age') as HTMLInputElement)?.setSelectionRange(age.length, age.length); navigator.clipboard.writeText(pasted).then(() => document.execCommand('paste')); }}
+                  onPaste={(e) => { const pasted = e.clipboardData.getData('text').replace(/[^0-9]/g, '').slice(0, 3); e.preventDefault(); setAge(pasted); setErrors((prev) => ({ ...prev, age: '', birthYear: '' })); }}
                   inputMode="numeric"
                   pattern="[0-9]*"
                   className={`w-full px-4 py-3 rounded-xl border-2 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:outline-none ${
@@ -217,7 +217,7 @@ export default function EligibilityTest() {
                   value={birthYear}
                   onChange={(e) => { const v = e.target.value.replace(/[^0-9]/g, ''); setBirthYear(v); setErrors((prev) => ({ ...prev, age: '', birthYear: '' })); }}
                   onKeyDown={(e) => { if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') e.preventDefault(); }}
-                  onPaste={(e) => { const pasted = e.clipboardData.getData('text').replace(/[^0-9]/g, ''); e.preventDefault(); (document.getElementById('birthYear') as HTMLInputElement)?.setSelectionRange(birthYear.length, birthYear.length); navigator.clipboard.writeText(pasted).then(() => document.execCommand('paste')); }}
+                  onPaste={(e) => { const pasted = e.clipboardData.getData('text').replace(/[^0-9]/g, '').slice(0, 4); e.preventDefault(); setBirthYear(pasted); setErrors((prev) => ({ ...prev, age: '', birthYear: '' })); }}
                   inputMode="numeric"
                   pattern="[0-9]*"
                   className={`w-full px-4 py-3 rounded-xl border-2 text-sm text-stone-900 placeholder:text-stone-400 transition-colors focus:outline-none ${

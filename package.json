@@ -14,7 +14,6 @@
     "test:lighthouse": "lhci autorun --config=lighthouserc.json"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
     "framer-motion": "^12.23.2",
     "geist": "^1.7.2",
     "leaflet": "^1.9.4",
@@ -22,8 +21,7 @@
     "next": "^16.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-leaflet": "^5.0.0",
-    "tailwind-merge": "^3.3.1"
+    "react-leaflet": "^5.0.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

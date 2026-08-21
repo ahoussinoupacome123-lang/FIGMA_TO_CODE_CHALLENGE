@@ -187,7 +187,7 @@ export const centers: Center[] = [
     id: 9,
     name: "Centre Hospitalier Départemental du Zou",
     nature: "Hôpital régional",
-    address: "Zone hospitlalière, Bohicon",
+    address: "Zone hospitalière, Bohicon",
     city: "Bohicon",
     postalCode: "02 BP",
     lat: 7.1750,

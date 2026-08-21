@@ -115,7 +115,7 @@ export default function DonationProcess() {
             transition={{ delay: 0.2 }}
             className="text-stone-600 text-lg leading-relaxed"
           >
-            De l\'accueil au départ, voici exactement ce qui vous attend. Aucune surprise, chaque étape est pensée pour votre confort et votre sécurité.
+            De l&apos;accueil au départ, voici exactement ce qui vous attend. Aucune surprise, chaque étape est pensée pour votre confort et votre sécurité.
           </motion.p>
         </div>
 

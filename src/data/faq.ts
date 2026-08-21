@@ -8,7 +8,7 @@ export const faqItems: FAQItem[] = [
   {
     question: "Le don de sang est-il douloureux ?",
     answer:
-      "La piqûre ressemble à une petite pincette qui dure une fraction de seconde. Pendant le prélèvement lui-même (environ 10 minutes), la plupart des donneurs ne ressentent aucune douleur. L'équipe médicale est présente en permanence pour vous rassurer et intervenir si besoin. Le inconfort, s'il y en a, est très temporaire et largement supportable.",
+      "La piqûre ressemble à une petite pincette qui dure une fraction de seconde. Pendant le prélèvement lui-même (environ 10 minutes), la plupart des donneurs ne ressentent aucune douleur. L'équipe médicale est présente en permanence pour vous rassurer et intervenir si besoin. L'inconfort, s'il y en a, est très temporaire et largement supportable.",
     category: 'idees_recues',
   },
   {

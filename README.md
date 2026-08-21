@@ -6,7 +6,7 @@
 
 ## Démo
 
-[![HemoLink Demo](./demo.mp4)](./demo.mp4)
+[Voir la démo](./demo.mp4)
 
 ---
 
@@ -89,7 +89,7 @@ Animations CSS custom : `heartbeat`, `float`, `drip`, `pulse-dot`. Framer Motion
 Le déroulement du don et la préparation sont un même parcours temporel. Les séparer créerait une rupture dans le flux. J'ai fusionné ces deux sections en une timeline unique avec les conseils intégrés.
 
 **2. Géolocalisation avec fallback Bénin**
-L'API `navigator.geolocation` est utilisée pour centrer la carte sur la position de l'utilisateur. Si l'autorisation est refusée, la carte fait un `flyTo` sur le centre du Bénin (9.3077°N, 2.3158°E) avec un toast informatif.
+L'API `navigator.geolocation` est utilisée pour centrer la carte sur la position de l'utilisateur. Si l'autorisation est refusée, la carte fait un `flyTo` sur le centre du Bénin (6.4961°N, 2.6292°E) avec un toast informatif.
 
 **3. Validation croisée âge/année de naissance**
 Le formulaire d'éligibilité vérifie la cohérence entre l'âge déclaré et l'année de naissance (tolérance ±1 an pour les anniversaires non passés). Le message d'erreur est contextualisé : *"Si vous êtes né(e) en 1998, vous devriez avoir 28 ou 27 ans, et non 35 ans."*
